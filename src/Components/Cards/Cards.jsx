@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
 import { Clock, User, Tag, ArrowRight, Star } from "lucide-react";
 
 const Cards = ({ singleCard }) => {
@@ -16,7 +16,7 @@ const Cards = ({ singleCard }) => {
   } = singleCard;
 
   return (
-    <motion.div 
+    <_motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -86,7 +86,7 @@ const Cards = ({ singleCard }) => {
           </Link>
         </div>
       </div>
-    </motion.div>
+    </_motion.div>
   );
 };
 

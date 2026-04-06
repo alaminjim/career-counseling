@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
 import Cards from "../Cards/Cards";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as _motion, AnimatePresence } from "framer-motion";
 import { Search, Filter, Layers, Briefcase, ChevronDown, SortAsc } from "lucide-react";
 
 const Services = () => {
@@ -111,7 +111,7 @@ const Services = () => {
           {/* Expandable Filter Panel */}
           <AnimatePresence>
             {isFilterOpen && (
-              <motion.div
+              <_motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
@@ -167,7 +167,7 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </_motion.div>
             )}
           </AnimatePresence>
 
@@ -192,7 +192,7 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredAndSortedData.map((singleCard, index) => (
-              <motion.div
+              <_motion.div
                 key={singleCard.id}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -201,14 +201,14 @@ const Services = () => {
                 transition={{ duration: 0.3 }}
               >
                 <Cards singleCard={singleCard} />
-              </motion.div>
+              </_motion.div>
             ))}
           </AnimatePresence>
         </div>
 
         {/* Empty State / Bottom CTA */}
         {filteredAndSortedData.length === 0 && (
-          <motion.div 
+          <_motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="py-24 text-center space-y-6"
@@ -230,7 +230,7 @@ const Services = () => {
             >
               Clear Filters
             </button>
-          </motion.div>
+          </_motion.div>
         )}
       </main>
 

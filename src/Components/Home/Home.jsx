@@ -3,7 +3,7 @@ import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import BackToTop from "../BackToTop/BackToTop";
 import Title from "../Title/Title";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion as _motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
   ArrowRight, CheckCircle2, Sparkles, Target, Zap, Users, Award,
@@ -93,7 +93,7 @@ const faqs = [
 
 /* ─── FAQ Item Component ─── */
 const FAQItem = ({ faq, index, isOpen, onToggle }) => (
-  <motion.div
+  <_motion.div
     initial={{ opacity: 0, y: 10 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
@@ -105,17 +105,17 @@ const FAQItem = ({ faq, index, isOpen, onToggle }) => (
       className="w-full flex items-center justify-between p-6 text-left group cursor-pointer"
     >
       <span className="font-bold text-lg pr-8 group-hover:text-primary transition-colors">{faq.q}</span>
-      <motion.div
+      <_motion.div
         animate={{ rotate: isOpen ? 180 : 0 }}
         transition={{ duration: 0.3 }}
         className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${isOpen ? 'bg-primary text-white' : 'bg-neutral/5 text-neutral/40'}`}
       >
         <ChevronDown size={20} />
-      </motion.div>
+      </_motion.div>
     </button>
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <_motion.div
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
@@ -123,11 +123,34 @@ const FAQItem = ({ faq, index, isOpen, onToggle }) => (
           className="overflow-hidden"
         >
           <p className="px-6 pb-6 text-neutral/60 leading-relaxed text-[15px]">{faq.a}</p>
-        </motion.div>
+        </_motion.div>
       )}
     </AnimatePresence>
-  </motion.div>
+  </_motion.div>
 );
+
+const StatCard = ({ stat, index }) => {
+  const { count, ref } = useCounter(stat.value, 2200);
+  const Icon = stat.icon;
+  return (
+    <_motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="text-center group flex flex-col items-center justify-center p-6 glass-card rounded-2xl"
+    >
+      <div className={`w-16 h-16 ${stat.bg} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
+        <Icon size={28} className={stat.color} />
+      </div>
+      <p className="text-4xl md:text-5xl font-black tracking-tight text-neutral">
+        {count.toLocaleString()}{stat.suffix}
+      </p>
+      <p className="font-medium text-neutral/60 mt-1">{stat.label}</p>
+    </_motion.div>
+  );
+};
 
 /* ─── MAIN HOME COMPONENT ─── */
 const Home = () => {
@@ -157,7 +180,7 @@ const Home = () => {
           </div>
 
           <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div 
+            <_motion.div 
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
@@ -199,9 +222,9 @@ const Home = () => {
                   <span className="font-medium text-neutral/80">Lifetime Support</span>
                 </div>
               </div>
-            </motion.div>
+            </_motion.div>
 
-            <motion.div 
+            <_motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -229,7 +252,7 @@ const Home = () => {
               </div>
 
               {/* New: Floating review badge */}
-              <motion.div
+              <_motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 3, delay: 1 }}
                 className="absolute -top-4 -right-4 md:right-8 md:top-8 px-4 py-3 bg-white rounded-2xl shadow-xl z-20 hidden md:flex items-center gap-3 border border-neutral/5"
@@ -245,8 +268,8 @@ const Home = () => {
                   </div>
                   <p className="text-[10px] font-bold text-neutral/50">2,500+ Reviews</p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </_motion.div>
+            </_motion.div>
           </div>
         </section>
 
@@ -258,35 +281,15 @@ const Home = () => {
         {/* ════════════════════════════════════════════
             SECTION 3: ANIMATED STATS COUNTER
         ════════════════════════════════════════════ */}
-        <section className="py-20 bg-white relative overflow-hidden">
+        <section className="py-20 bg-transparent relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary rounded-full blur-[200px]"></div>
           </div>
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
-              {statsData.map((stat, index) => {
-                const { count, ref } = useCounter(stat.value, 2200);
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    ref={ref}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="text-center group"
-                  >
-                    <div className={`w-16 h-16 ${stat.bg} rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon size={28} className={stat.color} />
-                    </div>
-                    <p className="text-4xl md:text-5xl font-black tracking-tight text-neutral">
-                      {count.toLocaleString()}{stat.suffix}
-                    </p>
-                    <p className="text-neutral/50 font-bold text-sm mt-2 uppercase tracking-wider">{stat.label}</p>
-                  </motion.div>
-                );
-              })}
+              {statsData.map((stat, index) => (
+                <StatCard key={index} stat={stat} index={index} />
+              ))}
             </div>
           </div>
         </section>
@@ -303,7 +306,7 @@ const Home = () => {
         ════════════════════════════════════════════ */}
         <section className="py-24 bg-white relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <motion.div
+            <_motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -319,7 +322,7 @@ const Home = () => {
               <p className="text-neutral/50 text-lg">
                 Four steps to transform your professional life forever.
               </p>
-            </motion.div>
+            </_motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
               {/* Connecting Line (desktop) */}
@@ -328,7 +331,7 @@ const Home = () => {
               {steps.map((step, idx) => {
                 const Icon = step.icon;
                 return (
-                  <motion.div
+                  <_motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -346,7 +349,7 @@ const Home = () => {
                     </div>
                     <h3 className="text-xl font-bold mb-3 font-display">{step.title}</h3>
                     <p className="text-neutral/50 text-sm leading-relaxed max-w-xs mx-auto">{step.desc}</p>
-                  </motion.div>
+                  </_motion.div>
                 );
               })}
             </div>
@@ -361,7 +364,7 @@ const Home = () => {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
 
           <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <motion.div
+            <_motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -377,13 +380,13 @@ const Home = () => {
               <p className="text-neutral/50 text-lg">
                 Real stories from real professionals who transformed their careers.
               </p>
-            </motion.div>
+            </_motion.div>
 
             {/* Testimonial Cards */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Featured Testimonial */}
               <AnimatePresence mode="wait">
-                <motion.div
+                <_motion.div
                   key={activeTestimonial}
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -415,13 +418,13 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </_motion.div>
               </AnimatePresence>
 
               {/* Testimonial Grid */}
               <div className="grid grid-cols-1 gap-4">
                 {testimonials.map((t, idx) => (
-                  <motion.button
+                  <_motion.button
                     key={idx}
                     onClick={() => setActiveTestimonial(idx)}
                     initial={{ opacity: 0, x: 20 }}
@@ -448,7 +451,7 @@ const Home = () => {
                         <Star key={i} size={12} fill="currentColor" className={activeTestimonial === idx ? 'text-amber-300' : 'text-amber-400'} />
                       ))}
                     </div>
-                  </motion.button>
+                  </_motion.button>
                 ))}
               </div>
             </div>
@@ -460,7 +463,7 @@ const Home = () => {
         ════════════════════════════════════════════ */}
         <section className="py-24 bg-white">
           <div className="max-w-4xl mx-auto px-4 md:px-8">
-            <motion.div
+            <_motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -476,7 +479,7 @@ const Home = () => {
               <p className="text-neutral/50 text-lg">
                 Everything you need to know about our services.
               </p>
-            </motion.div>
+            </_motion.div>
 
             <div className="space-y-4">
               {faqs.map((faq, idx) => (
@@ -490,7 +493,7 @@ const Home = () => {
               ))}
             </div>
 
-            <motion.div
+            <_motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -499,7 +502,7 @@ const Home = () => {
               <p className="text-neutral/40 font-medium">
                 Still have questions? <Link to="/career" className="text-primary font-bold hover:underline underline-offset-4">Contact our team</Link>
               </p>
-            </motion.div>
+            </_motion.div>
           </div>
         </section>
       </main>

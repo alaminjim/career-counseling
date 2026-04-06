@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
 import { 
   Globe, Users, FileText, CheckCircle2, 
   Sparkles, Laptop, Coffee, Award, Zap
@@ -15,14 +15,14 @@ const Career = () => {
       <main className="flex-grow pt-32 pb-20 max-w-7xl mx-auto px-4 md:px-8 w-full">
         {/* Header Section */}
         <section className="text-center space-y-6 mb-20">
-          <motion.div 
+          <_motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20 uppercase tracking-widest"
           >
             <Sparkles size={16} />
             <span>360° Career Ecosystem</span>
-          </motion.div>
+          </_motion.div>
           <h1 className="text-5xl md:text-7xl font-black tracking-tight font-display text-neutral uppercase">
             Complete <span className="text-primary italic">Career</span> Solutions
           </h1>
@@ -34,7 +34,7 @@ const Career = () => {
         {/* Feature Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {/* Online Services */}
-          <motion.div 
+          <_motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -65,10 +65,10 @@ const Career = () => {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </_motion.div>
 
           {/* Offline Workshops */}
-          <motion.div 
+          <_motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -99,10 +99,10 @@ const Career = () => {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </_motion.div>
 
           {/* Exclusive Membership */}
-          <motion.div 
+          <_motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -133,11 +133,11 @@ const Career = () => {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </_motion.div>
         </div>
 
         {/* Closing Banner */}
-        <motion.div 
+        <_motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -150,7 +150,7 @@ const Career = () => {
               Become a Member Now
             </button>
           </div>
-        </motion.div>
+        </_motion.div>
       </main>
 
       <Footer />

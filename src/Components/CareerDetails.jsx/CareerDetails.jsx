@@ -2,7 +2,7 @@ import { useLoaderData, useParams, Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as _motion, AnimatePresence } from "framer-motion";
 import { 
   Star, Clock, User, CheckCircle2, MessageSquare, 
   Send, Calendar, ShieldCheck, ArrowLeft, Info, X, Mail
@@ -77,7 +77,7 @@ const CareerDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Left Column: Service Details */}
           <div className="lg:col-span-2 space-y-12">
-            <motion.div 
+            <_motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-neutral/5"
@@ -150,7 +150,7 @@ const CareerDetails = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </_motion.div>
 
             {/* Review Section */}
             <div className="space-y-8">
@@ -178,7 +178,7 @@ const CareerDetails = () => {
                 <div className="grid gap-6">
                   <AnimatePresence>
                     {reviews.map((rev, idx) => (
-                      <motion.div 
+                      <_motion.div 
                         key={idx}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -198,7 +198,7 @@ const CareerDetails = () => {
                           </div>
                           <p className="text-neutral/60 text-sm leading-relaxed font-medium">{rev.comment}</p>
                         </div>
-                      </motion.div>
+                      </_motion.div>
                     ))}
                   </AnimatePresence>
                 </div>
@@ -209,7 +209,7 @@ const CareerDetails = () => {
           {/* Right Column: Booking Card (Sticky) */}
           <div className="lg:col-span-1">
             <div className="sticky top-32 space-y-6">
-              <motion.div 
+              <_motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="bg-neutral text-white rounded-[2.5rem] p-8 space-y-6 overflow-hidden relative shadow-xl shadow-neutral/20"
@@ -254,7 +254,7 @@ const CareerDetails = () => {
                     </p>
                   </div>
                 </form>
-              </motion.div>
+              </_motion.div>
 
               <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-neutral/5">
                 <h4 className="font-bold mb-4 text-lg">Need help?</h4>
@@ -277,7 +277,7 @@ const CareerDetails = () => {
       <AnimatePresence>
         {showContactModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-neutral/40 backdrop-blur-sm">
-            <motion.div 
+            <_motion.div 
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -332,7 +332,7 @@ const CareerDetails = () => {
                   </button>
                 </div>
               </form>
-            </motion.div>
+            </_motion.div>
           </div>
         )}
       </AnimatePresence>

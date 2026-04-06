@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
 import { Home, AlertTriangle, ArrowLeft } from "lucide-react";
 
 const ErrorPage = () => {
@@ -9,18 +9,18 @@ const ErrorPage = () => {
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[100px] animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-[100px] animate-pulse delay-1000"></div>
 
-      <motion.div 
+      <_motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-center relative z-10 space-y-8"
       >
         <div className="relative inline-block">
-          <motion.div
+          <_motion.div
             animate={{ rotate: [0, -10, 10, -10, 10, 0] }}
             transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
           >
             <AlertTriangle className="text-primary mx-auto" size={120} strokeWidth={1} />
-          </motion.div>
+          </_motion.div>
           <h1 className="text-9xl font-black text-neutral/5 absolute inset-0 -z-10 select-none">404</h1>
         </div>
 
@@ -43,7 +43,7 @@ const ErrorPage = () => {
             <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
           </Link>
         </div>
-      </motion.div>
+      </_motion.div>
 
       <footer className="absolute bottom-8 text-[10px] font-black uppercase tracking-[0.4em] text-neutral/20">
         CareerPath Error Analytics Protocol 1.0

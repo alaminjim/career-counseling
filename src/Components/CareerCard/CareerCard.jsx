@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Cards from "../Cards/Cards";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
 import { Sparkles, ArrowRight, Layers } from "lucide-react";
 
 const CareerCard = () => {
@@ -42,7 +42,7 @@ const CareerCard = () => {
       </div>
 
       {/* Trust Banner / Bottom CTA */}
-      <motion.div 
+      <_motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -60,7 +60,7 @@ const CareerCard = () => {
             Book Free Consultation
           </button>
         </div>
-      </motion.div>
+      </_motion.div>
     </section>
   );
 };

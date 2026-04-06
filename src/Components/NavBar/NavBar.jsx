@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { AuthContextUser } from "../Auth/AuthContext";
 import toast from "react-hot-toast";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as _motion, AnimatePresence } from "framer-motion";
 import { LogOut, User, Menu, X, ChevronDown, Briefcase } from "lucide-react";
 
 const NavBar = () => {
@@ -127,7 +127,7 @@ const NavBar = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
+          <_motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -165,7 +165,7 @@ const NavBar = () => {
                 )}
               </div>
             </div>
-          </motion.div>
+          </_motion.div>
         )}
       </AnimatePresence>
     </nav>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
 
 const Loading = () => {
   return (
@@ -7,7 +7,7 @@ const Loading = () => {
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[100px] animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-[100px] animate-pulse delay-700"></div>
 
-      <motion.div 
+      <_motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         className="relative flex flex-col items-center"
@@ -24,14 +24,14 @@ const Loading = () => {
           <div className="absolute inset-0 m-auto w-4 h-4 bg-primary rounded-full shadow-lg shadow-primary/40"></div>
         </div>
 
-        <motion.p 
+        <_motion.p 
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ repeat: Infinity, duration: 2 }}
           className="mt-8 text-xs font-black uppercase tracking-[0.3em] text-neutral/40 ml-1.5"
         >
           Synchronizing Career Path
-        </motion.p>
-      </motion.div>
+        </_motion.p>
+      </_motion.div>
     </div>
   );
 };

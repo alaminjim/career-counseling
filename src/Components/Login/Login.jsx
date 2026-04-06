@@ -3,7 +3,7 @@ import NavBar from "../NavBar/NavBar";
 import { useContext, useState } from "react";
 import { AuthContextUser } from "../Auth/AuthContext";
 import toast from "react-hot-toast";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as _motion, AnimatePresence } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, ArrowRight, X, KeyRound } from "lucide-react";
 import Footer from "../Footer/Footer";
 
@@ -73,7 +73,7 @@ const Login = () => {
       <NavBar />
       
       <main className="flex-grow flex items-center justify-center pt-32 pb-20 px-4">
-        <motion.div 
+        <_motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-md relative z-10"
@@ -160,14 +160,14 @@ const Login = () => {
               New here? <Link to="/register" className="text-primary hover:underline underline-offset-4">Create an account</Link>
             </p>
           </div>
-        </motion.div>
+        </_motion.div>
       </main>
 
       {/* Forgot Password Modal */}
       <AnimatePresence>
         {showForgotModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-neutral/40 backdrop-blur-sm">
-            <motion.div 
+            <_motion.div 
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -209,7 +209,7 @@ const Login = () => {
                   {isResetting ? <span className="loading loading-spinner loading-sm"></span> : "Send Reset Link"}
                 </button>
               </form>
-            </motion.div>
+            </_motion.div>
           </div>
         )}
       </AnimatePresence>

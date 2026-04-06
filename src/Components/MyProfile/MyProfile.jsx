@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContextUser } from "../Auth/AuthContext";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
 import { 
   User, Mail, Camera, Settings, Calendar, 
   Clock, ShieldCheck, Edit3, Save, ExternalLink 
@@ -43,7 +43,7 @@ const MyProfile = () => {
       
       <main className="flex-grow pt-32 pb-20 max-w-6xl mx-auto px-4 md:px-8 w-full">
         {/* Profile Header */}
-        <motion.div 
+        <_motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="relative mb-12"
@@ -80,7 +80,7 @@ const MyProfile = () => {
               </p>
             </div>
           </div>
-        </motion.div>
+        </_motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-20 md:mt-16">
           {/* Account Settings */}

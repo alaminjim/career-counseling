@@ -4,7 +4,7 @@ import Footer from "../Footer/Footer";
 import { useContext, useState } from "react";
 import { AuthContextUser } from "../Auth/AuthContext";
 import toast from "react-hot-toast";
-import { motion } from "framer-motion";
+import { motion as _motion } from "framer-motion";
 import { User, Mail, Lock, Image, Eye, EyeOff, ArrowRight, ShieldCheck } from "lucide-react";
 
 const Register = () => {
@@ -61,7 +61,7 @@ const Register = () => {
       <NavBar />
       
       <main className="flex-grow flex items-center justify-center pt-32 pb-20 px-4">
-        <motion.div 
+        <_motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="w-full max-w-lg"
@@ -174,7 +174,7 @@ const Register = () => {
               Already a member? <Link to="/login" className="text-primary hover:underline underline-offset-4">Sign in here</Link>
             </p>
           </div>
-        </motion.div>
+        </_motion.div>
       </main>
 
       <Footer />

@@ -64,5 +64,93 @@
     "counselor": "Michael Chang",
     "description": "Ready to work for yourself? Get expert guidance on pricing your services, finding your first 3 high-paying clients, establishing a professional portfolio, and handling contracts. Ideal for creatives and developers looking to go independent.",
     "rating": 4.8
+  },
+  {
+    "id": 7,
+    "service_name": "UX/UI Design Portfolio Node",
+    "image": "/assets/services/ux_ui.png",
+    "category": "Design",
+    "pricing": "$155",
+    "duration": "75 mins",
+    "counselor": "Alex Rivera",
+    "description": "Intensive portfolio deep-dive for designers. We will analyze your case studies, visual hierarchy, and prototyping skills. Learn how to tell a compelling story through your design process and secure roles at top-tier product studios.",
+    "rating": 4.9
+  },
+  {
+    "id": 8,
+    "service_name": "Agile Leadership Strategy",
+    "image": "/assets/services/agile.png",
+    "category": "Management",
+    "pricing": "$190",
+    "duration": "60 mins",
+    "counselor": "Marcus Thorne",
+    "description": "Specialized coaching for Scrum Masters and Agile Leads. Master the art of team dynamics, conflict resolution, and strategic sprint planning. Perfect for those looking to scale their impact from single teams to organizational frameworks.",
+    "rating": 5.0
+  },
+  {
+    "id": 9,
+    "service_name": "AI-Powered Career Tools",
+    "image": "/assets/services/ai_tools.png",
+    "category": "Tech",
+    "pricing": "$110",
+    "duration": "45 mins",
+    "counselor": "Sophia Chen",
+    "description": "Master the latest AI tools to supercharge your job search. From automated networking to AI-optimized resume tailoring and mock interview simulation. Learn to stay ahead in the rapidly evolving technical job market with efficiency.",
+    "rating": 4.8
+  },
+  {
+    "id": 10,
+    "service_name": "Remote Work Protocol",
+    "image": "/assets/services/remote.png",
+    "category": "Soft Skills",
+    "pricing": "$95",
+    "duration": "60 mins",
+    "counselor": "Nadia Volkov",
+    "description": "Maximize your productivity in a distributed environment. This session covers tools, asynchronous communication strategies, and building visibility in a remote-first culture. Ideal for professionals transitioning to digital nomad or hybrid setups.",
+    "rating": 4.7
+  },
+  {
+    "id": 11,
+    "service_name": "Public Speaking for Techies",
+    "image": "/assets/services/speaking.png",
+    "category": "Soft Skills",
+    "pricing": "$130",
+    "duration": "75 mins",
+    "counselor": "Julian Brooks",
+    "description": "Bridge the gap between complex technical data and compelling storytelling. We focus on stage presence, slide design, and simplification of complex concepts. Perfect for engineers prepping for conference talks or cross-functional presentations.",
+    "rating": 4.9
+  },
+  {
+    "id": 12,
+    "service_name": "Data Science Transformation",
+    "image": "/assets/services/data_science.png",
+    "category": "Data",
+    "pricing": "$175",
+    "duration": "90 mins",
+    "counselor": "Dr. Aris Thorne",
+    "description": "Complete roadmap for transitioning into high-level Data Science and ML roles. Identify essential mathematical foundations, coding proficiency requirements, and project-based learning paths to stand out to recruiters in FAANG and beyond.",
+    "rating": 5.0
+  },
+  {
+    "id": 13,
+    "service_name": "Product Management Sprint",
+    "image": "https://images.unsplash.com/photo-1542626991-cbc4e32524cc?q=80&w=800",
+    "category": "Product",
+    "pricing": "$165",
+    "duration": "60 mins",
+    "counselor": "Leo Martinez",
+    "description": "Tactical preparation for Product Management roles. Focus on market analysis, user storytelling, and technical feasibility communication. Learn how to lead without authority and drive product cross-functional success.",
+    "rating": 4.8
+  },
+  {
+    "id": 14,
+    "service_name": "Corporate Ethics & Dynamics",
+    "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800",
+    "category": "Professionalism",
+    "pricing": "$140",
+    "duration": "60 mins",
+    "counselor": "Victoria Sterling",
+    "description": "Navigate the complex web of corporate culture with integrity. This session covers ethical decision-making, strategic alliance building, and understanding organizational power structures to ensure long-term career stability and respect.",
+    "rating": 4.9
   }
 ]

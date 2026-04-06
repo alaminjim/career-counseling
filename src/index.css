@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
 @layer base {
   :root {
     /* 💎 Midnight Crystal - Luxury Professional Dark Palette */

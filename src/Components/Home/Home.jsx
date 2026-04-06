@@ -6,7 +6,7 @@ import { motion as _motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
   ArrowRight, CheckCircle2, Sparkles, Target, Zap, Users,
-  TrendingUp, Award, Globe, FileText, ChevronDown, MessageCircle, Play
+  TrendingUp, Award, Globe, FileText, ChevronDown, MessageCircle, Play, Rocket
 } from "lucide-react";
 
 /* ─── Animated Counter Hook ─── */

@@ -6,6 +6,7 @@ import router from "./Routes/Routes.jsx";
 import { RouterProvider } from "react-router-dom";
 import AuthContext from "./Components/Auth/AuthContext.jsx";
 import { Toaster } from "react-hot-toast";
+import Loading from "./Components/Loading/Loading.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -40,7 +41,7 @@ createRoot(document.getElementById("root")).render(
           },
         }}
       />
-      <RouterProvider router={router} />
+      <RouterProvider router={router} fallbackElement={<Loading />} />
     </AuthContext>
   </StrictMode>
 );

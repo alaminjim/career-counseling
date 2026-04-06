@@ -18,14 +18,13 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handelSignOut = () => {
-    userSignOut()
-      .then(() => {
-        toast.success("Logged out successfully");
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+  const handelSignOut = async () => {
+    try {
+      await userSignOut();
+      toast.success("Logged out successfully");
+    } catch (err) {
+      toast.error(err.message || "Sign-out failed.");
+    }
   };
 
   const navLinks = [

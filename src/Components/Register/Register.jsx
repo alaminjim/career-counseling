@@ -12,7 +12,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handelRegister = (e) => {
+  const handelRegister = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const name = form.get("name");
@@ -26,34 +26,25 @@ const Register = () => {
       return;
     }
 
-    createUser(email, password)
-      .then((result) => {
-        setUser(result.user);
-        toast.success("Account created! Welcome to CareerPath.");
-        
-        updateProfileUser({ displayName: name, photoURL: photo })
-          .then(() => {
-            navigate("/");
-          })
-          .catch((err) => {
-            toast.error(err.message);
-          });
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+    try {
+      await createUser(email, password);
+      // Wait for user or handle verification
+      toast.success("Account created! Welcome to CareerPath.");
+      
+      await updateProfileUser({ displayName: name, photoURL: photo });
+      navigate("/");
+    } catch (err) {
+      toast.error(err.errors?.[0]?.message || err.message);
+    }
   };
 
-  const handelGoogle = () => {
-    createUserGoogle()
-      .then((result) => {
-        setUser(result.user);
-        navigate("/");
-        toast.success("Google Authentication successful!");
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+  const handelGoogle = async () => {
+    try {
+      await createUserGoogle();
+      // authenticateWithRedirect will handle the navigation
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
 
   return (

@@ -17,33 +17,28 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handelLogIn = (e) => {
+  const handelLogIn = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const email = form.get("email");
     const password = form.get("password");
 
-    createLoginUser(email, password)
-      .then((result) => {
-        setUser(result.user);
-        navigate(location?.state?.from || "/");
-        toast.success("Welcome back! Authentication successful.");
-      })
-      .catch((err) => {
-        toast.error("Invalid credentials. Please verify your access tokens.");
-      });
+    try {
+      await createLoginUser(email, password);
+      navigate(location?.state?.from || "/");
+      toast.success("Welcome back! Authentication successful.");
+    } catch (err) {
+      toast.error(err.errors?.[0]?.message || "Invalid credentials.");
+    }
   };
 
-  const handelGoogle = () => {
-    createUserGoogle()
-      .then((result) => {
-        setUser(result.user);
-        navigate(location?.state?.from || "/");
-        toast.success("Google Authentication successful!");
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      });
+  const handelGoogle = async () => {
+    try {
+      await createUserGoogle();
+      // authenticateWithRedirect will handle the navigation
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
 
   const handlePasswordReset = (e) => {

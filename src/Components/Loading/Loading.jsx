@@ -2,34 +2,34 @@ import { motion as _motion } from "framer-motion";
 
 const Loading = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-slate-50 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-b1 relative overflow-hidden selection:bg-primary/20 selection:text-primary">
       {/* Background ambient elements */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-[100px] animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-[100px] animate-pulse delay-700"></div>
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] animate-pulse delay-[2000ms] pointer-events-none"></div>
 
       <_motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         className="relative flex flex-col items-center"
       >
-        <div className="relative w-24 h-24">
+        <div className="relative w-32 h-32">
           {/* Ripple effect */}
-          <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-ping"></div>
-          <div className="absolute inset-0 rounded-full border-4 border-primary/10 animate-ping delay-300"></div>
+          <div className="absolute inset-0 rounded-[2rem] border-2 border-primary/30 animate-ripple"></div>
+          <div className="absolute inset-0 rounded-[2rem] border-2 border-primary/10 animate-ripple-slow"></div>
           
-          {/* Main spinner */}
-          <div className="w-full h-full rounded-full border-t-4 border-l-4 border-primary animate-spin shadow-xl shadow-primary/20"></div>
+          {/* Main loader */}
+          <div className="w-full h-full rounded-[2.5rem] border-t-2 border-l-2 border-primary animate-spin shadow-2xl shadow-primary/20 bg-white/5 backdrop-blur-sm border-white/5"></div>
           
-          {/* Center dot */}
-          <div className="absolute inset-0 m-auto w-4 h-4 bg-primary rounded-full shadow-lg shadow-primary/40"></div>
+          {/* Center glow */}
+          <div className="absolute inset-0 m-auto w-6 h-6 bg-primary rounded-full shadow-[0_0_30px_rgba(45,212,191,0.8)]"></div>
         </div>
 
         <_motion.p 
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="mt-8 text-xs font-black uppercase tracking-[0.3em] text-neutral/40 ml-1.5"
+          animate={{ opacity: [0.3, 1, 0.3] }}
+          transition={{ repeat: Infinity, duration: 3 }}
+          className="mt-12 text-[10px] font-black uppercase tracking-[0.5em] text-slate-500 ml-2"
         >
-          Synchronizing Career Path
+          Synchronizing Intelligence Catalog
         </_motion.p>
       </_motion.div>
     </div>

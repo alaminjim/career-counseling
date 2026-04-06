@@ -166,7 +166,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-base-100 flex flex-col">
+    <div className="min-h-screen bg-b1 flex flex-col selection:bg-primary/20 selection:text-primary">
       <NavBar />
       
       <main className="flex-grow pt-24">
@@ -230,24 +230,24 @@ const Home = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white group">
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
                 <img 
                   src={heroImage} 
                   alt="Professional Workspace" 
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-b1/80 to-transparent"></div>
               </div>
               
               {/* Decorative Elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl -z-10"></div>
-              <div className="absolute -bottom-10 -left-10 p-6 bg-white rounded-2xl shadow-xl flex items-center gap-4 z-20 hidden md:flex border border-neutral/5 animate-float">
-                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white">
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10"></div>
+              <div className="absolute -bottom-10 -left-10 p-6 glass-card rounded-2xl shadow-2xl flex items-center gap-4 z-20 hidden md:flex animate-float">
+                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-primary-content shadow-lg shadow-primary/20">
                   <Target size={24} />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold leading-none">98%</p>
-                  <p className="text-xs text-neutral/60 font-semibold uppercase tracking-wider">Success Rate</p>
+                  <p className="text-2xl font-black text-white leading-none">98%</p>
+                  <p className="text-[10px] text-primary font-black uppercase tracking-widest mt-1">Success Rate</p>
                 </div>
               </div>
 
@@ -255,18 +255,18 @@ const Home = () => {
               <_motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 3, delay: 1 }}
-                className="absolute -top-4 -right-4 md:right-8 md:top-8 px-4 py-3 bg-white rounded-2xl shadow-xl z-20 hidden md:flex items-center gap-3 border border-neutral/5"
+                className="absolute -top-4 -right-4 md:right-8 md:top-8 px-5 py-4 glass-card rounded-2xl shadow-2xl z-20 hidden md:flex items-center gap-4 border border-white/10"
               >
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-white"></div>
-                  <div className="w-8 h-8 rounded-full bg-sky-200 border-2 border-white"></div>
-                  <div className="w-8 h-8 rounded-full bg-amber-200 border-2 border-white"></div>
+                  <div className="w-9 h-9 rounded-full bg-primary/20 border-2 border-b1"></div>
+                  <div className="w-9 h-9 rounded-full bg-slate-700 border-2 border-b1"></div>
+                  <div className="w-9 h-9 rounded-full bg-teal-900 border-2 border-b1"></div>
                 </div>
                 <div>
-                  <div className="flex gap-0.5 text-amber-400">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" />)}
+                  <div className="flex gap-0.5 text-primary">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
                   </div>
-                  <p className="text-[10px] font-bold text-neutral/50">2,500+ Reviews</p>
+                  <p className="text-[10px] font-black text-white/40 uppercase tracking-widest mt-1">2,500+ Reviews</p>
                 </div>
               </_motion.div>
             </_motion.div>
@@ -297,14 +297,14 @@ const Home = () => {
         {/* ════════════════════════════════════════════
             SECTION 4: CAREER SERVICES (Outlet)
         ════════════════════════════════════════════ */}
-        <section className="bg-base-200/50 min-h-[400px]">
+        <section className="bg-b2/40 min-h-[400px]">
           <Outlet />
         </section>
 
         {/* ════════════════════════════════════════════
             SECTION 5: HOW IT WORKS
         ════════════════════════════════════════════ */}
-        <section className="py-24 bg-white relative overflow-hidden">
+        <section className="py-24 bg-transparent relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
             <_motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -312,15 +312,15 @@ const Home = () => {
               viewport={{ once: true }}
               className="text-center max-w-2xl mx-auto mb-20 space-y-4"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                <Play size={14} />
-                <span>Simple Process</span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.2em]">
+                <Play size={14} className="fill-current" />
+                <span>Our Methodology</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-                How <span className="gradient-text font-display">CareerPath</span> Works
+              <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white">
+                How <span className="text-primary">CareerPath</span> Works
               </h2>
-              <p className="text-neutral/50 text-lg">
-                Four steps to transform your professional life forever.
+              <p className="text-slate-400 text-lg">
+                Four strategic steps to accelerate your professional growth.
               </p>
             </_motion.div>
 
@@ -359,7 +359,7 @@ const Home = () => {
         {/* ════════════════════════════════════════════
             SECTION 6: TESTIMONIALS
         ════════════════════════════════════════════ */}
-        <section className="py-24 bg-slate-50 relative overflow-hidden">
+        <section className="py-24 bg-b2/30 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
 
@@ -388,16 +388,16 @@ const Home = () => {
               <AnimatePresence mode="wait">
                 <_motion.div
                   key={activeTestimonial}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 30 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border border-neutral/5 relative overflow-hidden"
+                  className="glass-card rounded-[2.5rem] p-8 md:p-14 shadow-2xl relative overflow-hidden border border-white/5"
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
-                  <Quote className="text-primary/10 absolute top-6 right-8" size={80} />
+                  <Quote className="text-primary/5 absolute top-8 right-10" size={120} />
                   
-                  <div className="relative z-10 space-y-6">
+                  <div className="relative z-10 space-y-8">
                     <div className="flex gap-1 text-amber-400">
                       {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
                         <Star key={i} size={20} fill="currentColor" />

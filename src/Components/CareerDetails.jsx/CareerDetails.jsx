@@ -66,74 +66,82 @@ const CareerDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-b1 selection:bg-primary/20 selection:text-primary">
       <NavBar />
       
-      <main className="pt-32 pb-20 max-w-7xl mx-auto px-4 md:px-8">
-        <Link to="/services" className="inline-flex items-center gap-2 text-neutral/60 hover:text-primary transition-colors mb-8 font-medium">
-          <ArrowLeft size={18} /> Back to Services
+      <main className="pt-36 pb-24 max-w-7xl mx-auto px-6 md:px-12">
+        <Link to="/services" className="inline-flex items-center gap-3 text-slate-500 hover:text-primary transition-all mb-10 font-black uppercase tracking-widest text-xs group">
+          <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform" /> Back to Intelligence Catalog
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
           {/* Left Column: Service Details */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="lg:col-span-2 space-y-16">
             <_motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-neutral/5"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="glass-card rounded-[3rem] overflow-hidden border border-white/5 shadow-2xl"
             >
-              <div className="relative h-[400px]">
+              <div className="relative h-[500px]">
                 <img src={image} alt={service_name} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-8 left-8">
-                  <span className="px-4 py-1.5 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-widest mb-4 inline-block shadow-lg shadow-primary/30">
-                    {category}
-                  </span>
-                  <h1 className="text-4xl md:text-5xl font-black text-white font-display uppercase tracking-tight text-shadow-md">
+                <div className="absolute inset-0 bg-gradient-to-t from-b1 via-b1/20 to-transparent"></div>
+                <div className="absolute bottom-10 left-10 right-10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="px-5 py-1.5 rounded-xl bg-primary text-b1 text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-primary/30">
+                      {category}
+                    </span>
+                    <div className="lex gap-1 text-primary drop-shadow-glow">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} size={14} fill={i < Math.floor(rating) ? "currentColor" : "none"} className="inline" />
+                      ))}
+                    </div>
+                  </div>
+                  <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter drop-shadow-2xl">
                     {service_name}
                   </h1>
                 </div>
               </div>
 
-              <div className="p-8 md:p-12 space-y-8">
-                <div className="flex flex-wrap gap-8 py-6 border-y border-neutral/5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-sm hover:scale-105 transition-transform">
+              <div className="p-10 md:p-16 space-y-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-10 border-y border-white/5">
+                  <div className="flex items-center gap-5">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-primary shadow-inner">
                       <User size={24} />
                     </div>
                     <div>
-                      <p className="text-xs text-neutral/40 font-bold uppercase tracking-wider">Counselor</p>
-                      <p className="font-bold text-lg">{counselor}</p>
+                      <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Chief Counselor</p>
+                      <p className="font-bold text-xl text-white">{counselor}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shadow-sm hover:scale-105 transition-transform">
+                  <div className="flex items-center gap-5">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-primary shadow-inner">
                       <Clock size={24} />
                     </div>
                     <div>
-                      <p className="text-xs text-neutral/40 font-bold uppercase tracking-wider">Duration</p>
-                      <p className="font-bold text-lg">{duration}</p>
+                      <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Session Depth</p>
+                      <p className="font-bold text-xl text-white">{duration}</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-accent shadow-sm hover:scale-105 transition-transform">
+                  <div className="flex items-center gap-5">
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-primary shadow-inner">
                       <Star size={24} fill="currentColor" />
                     </div>
                     <div>
-                      <p className="text-xs text-neutral/40 font-bold uppercase tracking-wider">Rating</p>
-                      <p className="font-bold text-lg">{rating} / 5.0</p>
+                      <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Success Merit</p>
+                      <p className="font-bold text-xl text-white">{rating} / 5.0</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold flex items-center gap-2">
-                    <Info size={24} className="text-primary" /> About This Service
+                <div className="space-y-8">
+                  <h2 className="text-3xl font-black tracking-tight text-white flex items-center gap-4">
+                    <div className="w-1.5 h-8 bg-primary rounded-full"></div>
+                    Strategic Overview
                   </h2>
-                  <p className="text-neutral/70 text-lg leading-relaxed">
+                  <p className="text-slate-400 text-xl leading-relaxed font-medium">
                     {description}
                   </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-6">
                     {[
                       "Personalized Roadmap",
                       "Industry Insider Tips",
@@ -142,9 +150,9 @@ const CareerDetails = () => {
                       "Actionable Career Milestones",
                       "Exclusive Resource Access"
                     ].map((feature, i) => (
-                      <div key={i} className="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-neutral/5 hover:border-primary/20 transition-colors">
-                        <CheckCircle2 size={20} className="text-success flex-shrink-0" />
-                        <span className="font-semibold text-neutral/80">{feature}</span>
+                      <div key={i} className="flex items-center gap-4 p-6 bg-white/5 rounded-[1.5rem] border border-white/5 hover:border-primary/30 transition-all group">
+                        <CheckCircle2 size={24} className="text-primary flex-shrink-0" />
+                        <span className="font-bold text-slate-300 group-hover:text-white transition-colors">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -153,50 +161,52 @@ const CareerDetails = () => {
             </_motion.div>
 
             {/* Review Section */}
-            <div className="space-y-8">
-              <h2 className="text-2xl font-bold flex items-center gap-2 px-2">
-                <MessageSquare size={24} className="text-primary" /> Student Reviews
+            <div className="space-y-12">
+              <h2 className="text-3xl font-black tracking-tighter text-white flex items-center gap-4 px-2">
+                <MessageSquare size={28} className="text-primary" /> 
+                Impact Feed
               </h2>
-              <div className="space-y-6">
-                <div className="bg-white p-6 rounded-3xl shadow-sm border border-neutral/5 transition-shadow hover:shadow-md">
+              <div className="space-y-8">
+                <div className="glass-card p-8 md:p-10 rounded-[2.5rem] border border-white/5 shadow-2xl relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
                   <textarea 
                     value={newReview}
                     onChange={(e) => setNewReview(e.target.value)}
-                    placeholder="Share your experience..."
-                    className="w-full h-32 p-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-primary/20 resize-none mb-4 outline-none font-medium text-neutral"
+                    placeholder="Share your breakthrough moment..."
+                    className="w-full h-40 p-6 rounded-2xl bg-b1/50 border border-white/5 focus:border-primary/50 resize-none mb-6 outline-none font-bold text-white placeholder:text-slate-700 transition-all"
                   />
                   <div className="flex justify-end">
                     <button 
                       onClick={handleAddReview}
-                      className="btn-premium flex items-center gap-2"
+                      className="btn-premium flex items-center gap-3 px-10"
                     >
-                      Post Review <Send size={18} />
+                      Publish Impact <Send size={20} />
                     </button>
                   </div>
                 </div>
 
-                <div className="grid gap-6">
+                <div className="grid gap-10">
                   <AnimatePresence>
                     {reviews.map((rev, idx) => (
                       <_motion.div 
                         key={idx}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="bg-white p-6 rounded-3xl shadow-sm border border-neutral/5 flex gap-4 hover:border-primary/10 transition-colors"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="glass-card p-10 rounded-[2.5rem] border border-white/5 flex gap-8 hover:border-primary/20 transition-all relative group"
                       >
-                        <div className="w-12 h-12 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center font-bold text-neutral">
+                        <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex-shrink-0 flex items-center justify-center font-black text-2xl text-primary shadow-inner group-hover:scale-110 transition-transform">
                           {rev.user.charAt(0)}
                         </div>
-                        <div className="space-y-2 flex-grow">
+                        <div className="space-y-4 flex-grow">
                           <div className="flex justify-between items-center">
-                            <p className="font-bold">{rev.user}</p>
-                            <div className="flex gap-1 text-amber-400">
+                            <p className="font-black text-white text-xl tracking-tight">{rev.user}</p>
+                            <div className="flex gap-1 text-primary">
                               {[...Array(5)].map((_, i) => (
-                                <Star key={i} size={14} fill={i < rev.rating ? "currentColor" : "none"} />
+                                <Star key={i} size={16} fill={i < rev.rating ? "currentColor" : "none"} className="drop-shadow-glow" />
                               ))}
                             </div>
                           </div>
-                          <p className="text-neutral/60 text-sm leading-relaxed font-medium">{rev.comment}</p>
+                          <p className="text-slate-400 text-lg leading-relaxed font-bold italic">"{rev.comment}"</p>
                         </div>
                       </_motion.div>
                     ))}
@@ -208,64 +218,68 @@ const CareerDetails = () => {
 
           {/* Right Column: Booking Card (Sticky) */}
           <div className="lg:col-span-1">
-            <div className="sticky top-32 space-y-6">
+            <div className="sticky top-32 space-y-8">
               <_motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-neutral text-white rounded-[2.5rem] p-8 space-y-6 overflow-hidden relative shadow-xl shadow-neutral/20"
+                className="bg-[#1e293b] text-white rounded-[3rem] p-10 space-y-8 overflow-hidden relative shadow-2xl shadow-black/40 border border-white/10"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-secondary/20 rounded-full blur-3xl"></div>
+                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/20 rounded-full blur-[80px] pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-secondary/10 rounded-full blur-[80px] pointer-events-none"></div>
                 
-                <div className="pb-6 border-b border-white/10 relative z-10">
-                  <p className="text-neutral-400 font-bold uppercase text-xs tracking-widest mb-2 flex items-center gap-2">
-                    <ShieldCheck size={14} className="text-success" /> Investment
+                <div className="pb-8 border-b border-white/5 relative z-10">
+                  <p className="text-slate-500 font-black uppercase text-[10px] tracking-[0.3em] mb-3 flex items-center gap-3">
+                    <ShieldCheck size={16} className="text-primary" /> Program Investment
                   </p>
-                  <div className="text-5xl font-black text-white">{pricing}</div>
+                  <div className="text-6xl font-black text-white drop-shadow-glow">{pricing}</div>
                 </div>
 
-                <form onSubmit={handleBooking} className="space-y-4 relative z-10">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-neutral-400">Select Date</label>
-                    <div className="relative">
-                      <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400" size={18} />
+                <form onSubmit={handleBooking} className="space-y-6 relative z-10">
+                  <div className="space-y-3">
+                    <label className="text-xs font-black uppercase tracking-widest text-slate-500 ml-2">Strategic Launch Date</label>
+                    <div className="relative group">
+                      <Calendar className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-primary transition-colors" size={20} />
                       <input 
                         type="date" 
                         required 
-                        className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:ring-2 focus:ring-primary/40 focus:border-primary/40 outline-none text-white transition-all custom-calendar-icon" 
+                        className="w-full pl-14 pr-6 py-5 bg-b1/50 border border-white/10 rounded-2xl focus:border-primary transition-all outline-none text-white font-bold" 
                       />
                     </div>
                   </div>
                   
-                  <div className="pt-4 space-y-4">
+                  <div className="pt-6 space-y-6">
                     <button 
                       type="submit" 
                       disabled={isBooking}
-                      className="w-full btn-premium py-4 rounded-xl flex items-center justify-center gap-2 text-lg font-bold disabled:opacity-50"
+                      className="w-full btn-premium py-5 rounded-2xl flex items-center justify-center gap-4 text-xl font-black uppercase tracking-widest disabled:opacity-50"
                     >
                       {isBooking ? (
-                        <span className="loading loading-spinner loading-sm"></span>
+                        <span className="loading loading-spinner loading-md"></span>
                       ) : (
-                        <>Complete Booking <ArrowLeft className="rotate-180" size={20} /></>
+                        <>Initialize <ArrowLeft className="rotate-180" size={24} /></>
                       )}
                     </button>
-                    <p className="text-center text-xs text-neutral-500 flex items-center justify-center gap-2">
-                      <ShieldCheck size={14} /> 100% Satisfaction Guarantee
-                    </p>
+                    <div className="flex flex-col items-center justify-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                      <div className="flex items-center gap-3">
+                        <ShieldCheck size={14} className="text-primary" /> Elite Security Protocol
+                      </div>
+                      <p className="text-primary/40">100% Satisfaction Merit</p>
+                    </div>
                   </div>
                 </form>
               </_motion.div>
 
-              <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-neutral/5">
-                <h4 className="font-bold mb-4 text-lg">Need help?</h4>
-                <p className="text-neutral/60 text-sm mb-6 leading-relaxed font-medium">
-                  Have questions about this session? Chat with our team or schedule a callback.
+              <div className="glass-card p-10 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+                <h4 className="font-black mb-4 text-xl text-white tracking-tight">Need Support?</h4>
+                <p className="text-slate-500 text-base mb-8 leading-relaxed font-bold">
+                  Technical or strategic clarification? Connect with our global support hub.
                 </p>
                 <button 
                   onClick={() => setShowContactModal(true)}
-                  className="w-full py-3 rounded-xl border-2 border-neutral/10 font-bold text-neutral hover:bg-neutral/5 hover:border-neutral/20 transition-all cursor-pointer"
+                  className="w-full py-4 rounded-2xl border-2 border-white/5 font-black uppercase tracking-widest text-xs text-slate-400 hover:text-white hover:bg-white/5 hover:border-primary/20 transition-all cursor-pointer"
                 >
-                  Contact Support
+                  Request Dispatch
                 </button>
               </div>
             </div>
@@ -276,59 +290,59 @@ const CareerDetails = () => {
       {/* Contact Support Modal */}
       <AnimatePresence>
         {showContactModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-neutral/40 backdrop-blur-sm">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-b1/80 backdrop-blur-3xl">
             <_motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-white rounded-3xl p-8 max-w-lg w-full shadow-2xl relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="bg-[#1e293b] rounded-[3rem] p-12 max-w-lg w-full shadow-2xl relative border border-white/10"
             >
               <button 
                 onClick={() => setShowContactModal(false)}
-                className="absolute top-4 right-4 p-2 text-neutral/40 hover:text-neutral hover:bg-neutral/5 rounded-full transition-colors cursor-pointer"
+                className="absolute top-8 right-8 p-3 text-slate-500 hover:text-white hover:bg-white/5 rounded-2xl transition-all cursor-pointer"
               >
-                <X size={20} />
+                <X size={24} />
               </button>
 
-              <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
-                <Mail size={32} />
+              <div className="w-20 h-20 bg-primary/10 text-primary rounded-[1.5rem] flex items-center justify-center mb-10 border border-primary/20 shadow-lg shadow-primary/10">
+                <Mail size={40} />
               </div>
               
-              <h3 className="text-2xl font-bold font-display mb-2">Contact Support</h3>
-              <p className="text-neutral/60 text-sm mb-6">
-                Have a question about <strong>{service_name}</strong>? Send us a message and we'll get back to you shortly.
+              <h3 className="text-3xl font-black text-white mb-3 tracking-tighter">Support Dispatch</h3>
+              <p className="text-slate-400 font-bold mb-10 text-lg leading-relaxed">
+                Inquiry regarding <strong className="text-primary">{service_name}</strong>? Bridge the gap now.
               </p>
 
-              <form onSubmit={handleContactSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="relative col-span-2 md:col-span-1">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral/30" size={18} />
-                    <input type="text" required placeholder="Your Name" className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-neutral/10 rounded-xl focus:ring-2 focus:ring-primary/20 transition-all outline-none" />
+              <form onSubmit={handleContactSubmit} className="space-y-6">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="relative group col-span-2 md:col-span-1">
+                    <User className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-primary" size={20} />
+                    <input type="text" required placeholder="Identity" className="w-full pl-14 pr-6 py-5 bg-b1/50 border border-white/10 rounded-2xl focus:border-primary transition-all outline-none text-white font-bold" />
                   </div>
-                  <div className="relative col-span-2 md:col-span-1">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral/30" size={18} />
-                    <input type="email" required placeholder="Email Address" className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-neutral/10 rounded-xl focus:ring-2 focus:ring-primary/20 transition-all outline-none" />
+                  <div className="relative group col-span-2 md:col-span-1">
+                    <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-primary" size={20} />
+                    <input type="email" required placeholder="Mail Node" className="w-full pl-14 pr-6 py-5 bg-b1/50 border border-white/10 rounded-2xl focus:border-primary transition-all outline-none text-white font-bold" />
                   </div>
                 </div>
                 <textarea 
                   required 
-                  placeholder="How can we help you?" 
-                  className="w-full p-4 h-32 bg-slate-50 border border-neutral/10 rounded-xl focus:ring-2 focus:ring-primary/20 transition-all outline-none resize-none" 
+                  placeholder="Intelligence / Query details..." 
+                  className="w-full p-6 h-40 bg-b1/50 border border-white/10 rounded-2xl focus:border-primary transition-all outline-none resize-none text-white font-bold" 
                 ></textarea>
-                <div className="flex justify-end pt-2">
+                <div className="flex flex-col sm:flex-row justify-end gap-4 pt-4">
                   <button 
                     type="button" 
                     onClick={() => setShowContactModal(false)}
-                    className="px-6 py-3 font-bold text-neutral/60 hover:text-neutral transition-colors cursor-pointer"
+                    className="px-8 py-5 font-black uppercase tracking-widest text-xs text-slate-500 hover:text-white transition-all order-2 sm:order-1"
                   >
-                    Cancel
+                    Abort
                   </button>
                   <button 
                     type="submit" 
                     disabled={isSendingMessage}
-                    className="btn-premium px-8 py-3 rounded-xl disabled:opacity-50 cursor-pointer"
+                    className="btn-premium px-12 py-5 rounded-2xl order-1 sm:order-2 disabled:opacity-50"
                   >
-                    {isSendingMessage ? <span className="loading loading-spinner loading-sm"></span> : "Send Message"}
+                    {isSendingMessage ? <span className="loading loading-spinner loading-md"></span> : "Execute Transmission"}
                   </button>
                 </div>
               </form>

@@ -38,31 +38,31 @@ const NavBar = () => {
     navLinks.push({ name: "My Profile", path: "/profile" });
   }
 
-  const activeLinkStyle = "text-primary font-bold border-b-2 border-primary pb-1 transition-all duration-300";
-  const normalLinkStyle = "text-neutral/80 font-medium hover:text-primary transition-all duration-300";
+  const activeLinkStyle = "text-primary font-bold nav-link-active pb-1 transition-all duration-300";
+  const normalLinkStyle = "text-slate-200/70 font-medium hover:text-primary transition-all duration-300";
 
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "py-3 glass-nav shadow-md" 
-          : "py-5 bg-transparent"
+          ? "py-3 glass-nav shadow-2xl" 
+          : "py-6 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 group-hover:rotate-12 transition-transform duration-300">
-            <Briefcase size={22} />
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 bg-primary rounded-2xl flex items-center justify-center text-primary-content shadow-lg shadow-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+            <Briefcase size={24} />
           </div>
-          <span className="text-xl md:text-2xl font-extrabold tracking-tight">
-            Career<span className="text-primary font-display">Path</span>
+          <span className="text-2xl md:text-3xl font-black tracking-tighter text-white">
+            Career<span className="text-primary">Path</span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
-          <ul className="flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-10">
+          <ul className="flex items-center gap-8">
             {navLinks.map((link) => (
               <li key={link.path}>
                 <NavLink
@@ -75,52 +75,54 @@ const NavBar = () => {
             ))}
           </ul>
 
-          <div className="h-6 w-[1px] bg-neutral/10 mx-2"></div>
+          <div className="h-8 w-[1px] bg-white/10 mx-2"></div>
 
           {user ? (
             <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="flex items-center gap-2 cursor-pointer group">
+              <div tabIndex={0} role="button" className="flex items-center gap-3 cursor-pointer group p-1 pr-3 rounded-full hover:bg-white/5 transition-all">
                 <div className="avatar">
-                  <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 transition-all duration-300 group-hover:scale-105">
+                  <div className="w-10 h-10 rounded-full ring-2 ring-primary/30 ring-offset-2 ring-offset-b1 transition-all duration-500 group-hover:ring-primary">
                     <img src={user?.photoURL || "https://ui-avatars.com/api/?name=" + user?.displayName} alt="Profile" />
                   </div>
                 </div>
                 <div className="hidden xl:block">
-                  <p className="text-sm font-semibold leading-tight">{user?.displayName}</p>
-                  <p className="text-xs text-neutral/60">Professional Account</p>
+                  <p className="text-sm font-bold text-white leading-tight">{user?.displayName}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-primary font-black">Pro Member</p>
                 </div>
-                <ChevronDown size={16} className="text-neutral/40 transition-transform duration-300 group-hover:translate-y-0.5" />
+                <ChevronDown size={16} className="text-white/40 transition-transform duration-300 group-hover:translate-y-0.5" />
               </div>
-              <ul tabIndex={0} className="dropdown-content mt-4 z-[1] p-2 shadow-2xl bg-base-200 rounded-2xl w-52 border border-neutral/20 overflow-hidden">
-                <li className="p-3 border-b border-neutral/20 mb-1">
-                  <p className="text-xs font-bold uppercase text-neutral/40">Account Info</p>
-                  <p className="text-sm font-medium truncate">{user?.email}</p>
+              <ul tabIndex={0} className="dropdown-content mt-4 z-[1] p-3 shadow-2xl bg-[#1e293b] rounded-2xl w-60 border border-white/5 overflow-hidden backdrop-blur-xl">
+                <li className="p-4 border-b border-white/5 mb-2">
+                  <p className="text-[10px] font-black uppercase text-white/30 tracking-tighter mb-1">Authenticated Account</p>
+                  <p className="text-xs font-medium text-slate-200 truncate">{user?.email}</p>
                 </li>
                 <li>
-                  <Link to="/profile" className="flex items-center gap-3 p-3 hover:bg-primary/5 rounded-xl transition-colors text-neutral font-medium">
-                    <User size={18} className="text-primary" /> My Profile
+                  <Link to="/profile" className="flex items-center gap-3 p-3 hover:bg-white/5 rounded-xl transition-all text-slate-200 font-semibold group">
+                    <User size={18} className="text-primary group-hover:scale-110 transition-transform" /> 
+                    <span>My Profile</span>
                   </Link>
                 </li>
                 <li>
-                  <button onClick={handelSignOut} className="flex items-center gap-3 p-3 w-full text-left hover:bg-error/5 rounded-xl transition-colors text-error font-medium mt-1">
-                    <LogOut size={18} /> Sign Out
+                  <button onClick={handelSignOut} className="flex items-center gap-3 p-3 w-full text-left hover:bg-red-500/10 rounded-xl transition-all text-red-400 font-semibold mt-1 group">
+                    <LogOut size={18} className="group-hover:-translate-x-1 transition-transform" /> 
+                    <span>Sign Out</span>
                   </button>
                 </li>
               </ul>
             </div>
           ) : (
             <Link to="/login" className="btn-premium">
-              Log In
+              Sign In
             </Link>
           )}
         </div>
 
         {/* Mobile Toggle */}
         <button 
-          className="lg:hidden p-2 text-neutral hover:bg-neutral/5 rounded-lg transition-colors"
+          className="lg:hidden p-3 text-white bg-white/5 hover:bg-white/10 rounded-2xl transition-all"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
@@ -128,21 +130,22 @@ const NavBar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <_motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-base-100 border-b border-neutral/20 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            className="lg:hidden fixed inset-x-4 top-24 z-50 glass-nav rounded-3xl border border-white/10 overflow-hidden shadow-2xl"
           >
-            <div className="px-4 py-6 space-y-4">
-              <ul className="space-y-4">
+            <div className="p-6 space-y-6">
+              <ul className="space-y-2">
                 {navLinks.map((link) => (
                   <li key={link.path}>
                     <NavLink
                       to={link.path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={({ isActive }) => (isActive ? "text-primary font-bold text-lg block" : "text-neutral/80 font-medium text-lg block")}
+                      className={({ isActive }) => (isActive ? "bg-primary/10 text-primary p-4 rounded-xl font-bold flex items-center justify-between" : "text-white/70 p-4 rounded-xl font-medium block hover:bg-white/5")}
                     >
-                      {link.name}
+                      <span>{link.name}</span>
+                      {link.path === window.location.pathname && <div className="w-2 h-2 bg-primary rounded-full blur-[2px]"></div>}
                     </NavLink>
                   </li>
                 ))}

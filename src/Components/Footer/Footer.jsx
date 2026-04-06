@@ -21,116 +21,133 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#222831] border-t border-[#393E46] text-[#EEEEEE] pt-20 pb-10 relative overflow-hidden">
-      {/* Animated glow effect behind footer content */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#00ADB5] to-transparent opacity-50"></div>
+    <footer className="bg-b1 border-t border-white/5 pt-24 pb-12 relative overflow-hidden">
+      {/* Dynamic Aura Background */}
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
       
-      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Premium Newsletter Section */}
-        <div className="bg-white/5 rounded-3xl p-8 md:p-12 mb-16 border border-white/10 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
-            <div className="max-w-xl text-center lg:text-left space-y-4">
-              <h3 className="text-3xl font-black font-display tracking-tight text-white mb-2">
-                Accelerate Your <span className="text-primary italic">Career</span>
+        <div className="glass-card rounded-[3rem] p-10 md:p-16 mb-20 relative overflow-hidden border border-white/5">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+            <div className="max-w-xl text-center lg:text-left space-y-6">
+              <h3 className="text-4xl md:text-5xl font-black tracking-tighter text-white leading-tight">
+                Unlock Your <span className="text-primary">Full Potential</span>
               </h3>
-              <p className="text-neutral-400 font-medium text-lg leading-relaxed">
-                Join our newsletter to receive weekly insights, exclusive job opportunities, and expert career development tips directly in your inbox.
+              <p className="text-slate-400 font-medium text-lg md:text-xl leading-relaxed">
+                Join our elite newsletter for exclusive career blueprints, job market alerts, and strategic growth tips.
               </p>
             </div>
             
-            <form onSubmit={handleSubscribe} className="w-full lg:w-auto flex-grow max-w-md relative">
-              <input 
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                placeholder="Enter your professional email" 
-                className="w-full pl-6 pr-40 py-5 bg-white/10 border border-white/20 rounded-2xl focus:ring-2 focus:ring-primary/50 outline-none text-white placeholder:text-neutral-500 font-medium"
-              />
-              <button 
-                type="submit"
-                disabled={isSubscribing}
-                className="absolute right-2 top-2 bottom-2 px-6 bg-primary hover:bg-primary-focus transition-colors text-white font-bold rounded-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
-              >
-                {isSubscribing ? <span className="loading loading-spinner loading-sm"></span> : <>Subscribe <Send size={16} /></>}
-              </button>
+            <form onSubmit={handleSubscribe} className="w-full lg:w-auto flex-grow max-w-lg relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2rem] blur opacity-0 group-focus-within:opacity-100 transition duration-500"></div>
+              <div className="relative flex flex-col sm:flex-row gap-3">
+                <input 
+                  type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Enter your professional email" 
+                  className="flex-grow px-8 py-5 bg-b1/50 border border-white/10 rounded-2xl focus:border-primary outline-none text-white placeholder:text-slate-600 font-bold transition-all"
+                />
+                <button 
+                  type="submit"
+                  disabled={isSubscribing}
+                  className="btn-premium whitespace-nowrap min-w-[160px] flex items-center justify-center gap-3 disabled:opacity-50"
+                >
+                  {isSubscribing ? <span className="loading loading-spinner loading-sm"></span> : <>Join Now <Send size={18} /></>}
+                </button>
+              </div>
             </form>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           {/* Brand Column */}
-          <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">
-                <Briefcase size={22} />
+          <div className="space-y-8">
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-11 h-11 bg-primary rounded-2xl flex items-center justify-center text-primary-content shadow-lg shadow-primary/20 group-hover:rotate-12 transition-transform duration-500">
+                <Briefcase size={24} />
               </div>
-              <span className="text-2xl font-extrabold tracking-tight">
-                Career<span className="text-primary font-display">Path</span>
+              <span className="text-2xl font-black tracking-tighter text-white">
+                Career<span className="text-primary">Path</span>
               </span>
             </Link>
-            <p className="text-neutral-400 leading-relaxed font-medium">
-              Empowering professionals to find their true calling through expert guidance, personalized roadmaps, and industry-leading resources.
+            <p className="text-slate-400 leading-relaxed font-medium text-base">
+              The world's most sophisticated career guidance platform for ambitious professionals seeking meaningful impact.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors duration-300">
-                <Facebook size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors duration-300">
-                <Twitter size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors duration-300">
-                <Linkedin size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors duration-300">
-                <Github size={18} />
-              </a>
+              {[
+                { icon: Facebook, href: "#" },
+                { icon: Twitter, href: "#" },
+                { icon: Linkedin, href: "#" },
+                { icon: Github, href: "#" }
+              ].map((social, i) => (
+                <a key={i} href={social.href} className="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-primary hover:text-b1 transition-all duration-300 border border-white/5 hover:border-primary text-slate-400">
+                  <social.icon size={20} />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-6 font-display text-white">Quick Links</h3>
-            <ul className="space-y-4 font-medium text-sm">
-              <li><Link to="/" className="text-neutral-400 hover:text-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span> Home</Link></li>
-              <li><Link to="/services" className="text-neutral-400 hover:text-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span> Career Services</Link></li>
-              <li><Link to="/career" className="text-neutral-400 hover:text-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span> Career Path</Link></li>
-              <li><Link to="/profile" className="text-neutral-400 hover:text-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span> User Dashboard</Link></li>
+            <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 text-white/40">Navigation</h3>
+            <ul className="space-y-5 font-bold text-sm">
+              {[
+                { name: "Home", path: "/" },
+                { name: "Career Services", path: "/services" },
+                { name: "Career Path", path: "/career" },
+                { name: "User Dashboard", path: "/profile" }
+              ].map((link, i) => (
+                <li key={i}>
+                  <Link to={link.path} className="text-slate-400 hover:text-primary transition-all flex items-center gap-3 group">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-primary group-hover:scale-150 transition-all"></span> 
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-bold mb-6 font-display text-white">Top Services</h3>
-            <ul className="space-y-4 text-neutral-400 font-medium text-sm">
-              <li className="hover:text-primary transition-colors cursor-pointer flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-accent/50"></span> Career Counseling</li>
-              <li className="hover:text-primary transition-colors cursor-pointer flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-accent/50"></span> Resume Building</li>
-              <li className="hover:text-primary transition-colors cursor-pointer flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-accent/50"></span> Interview Prep</li>
-              <li className="hover:text-primary transition-colors cursor-pointer flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-accent/50"></span> Skill Assessments</li>
+            <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 text-white/40">Our Specialties</h3>
+            <ul className="space-y-5 text-slate-400 font-bold text-sm">
+              {[
+                "Career Counseling",
+                "Resume Building",
+                "Interview Prep",
+                "Skill Assessments"
+              ].map((service, i) => (
+                <li key={i} className="hover:text-primary transition-all cursor-pointer flex items-center gap-3 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-primary group-hover:scale-150 transition-all"></span> 
+                  {service}
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-bold mb-6 font-display text-white">Contact Info</h3>
-            <ul className="space-y-5 font-medium text-sm">
-              <li className="flex items-start gap-4 text-neutral-400 group">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors shrink-0">
-                  <MapPin size={18} className="text-white" />
+            <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 text-white/40">Connect</h3>
+            <ul className="space-y-6 font-bold text-sm">
+              <li className="flex items-start gap-5 text-slate-400 group">
+                <div className="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all shrink-0 border border-white/5">
+                  <MapPin size={20} />
                 </div>
-                <span className="pt-1">123 Career Blvd, Tech City,<br />Innovation District</span>
+                <span className="pt-2 leading-relaxed">Innovation District,<br />Tech City, 10420</span>
               </li>
-              <li className="flex items-center gap-4 text-neutral-400 group">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors shrink-0">
-                  <Phone size={18} className="text-white" />
+              <li className="flex items-center gap-5 text-slate-400 group">
+                <div className="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all shrink-0 border border-white/5">
+                  <Phone size={20} />
                 </div>
                 <span>+1 (555) 000-0000</span>
               </li>
-              <li className="flex items-center gap-4 text-neutral-400 group">
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary transition-colors shrink-0">
-                  <Mail size={18} className="text-white" />
+              <li className="flex items-center gap-5 text-slate-400 group cursor-pointer">
+                <div className="w-11 h-11 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all shrink-0 border border-white/5">
+                  <Mail size={20} />
                 </div>
                 <span>hello@careerpath.com</span>
               </li>
@@ -138,15 +155,15 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Newsletter / Bottom */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-neutral-500 font-medium text-sm">
-            © {currentYear} CareerPath. All rights reserved. Built with <span className="text-red-500">❤️</span> for professionals.
+        {/* Bottom Banner */}
+        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-slate-500 font-bold text-xs">
+            © {currentYear} <span className="text-white">CareerPath</span>. Professional Excellence Guaranteed.
           </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-neutral-500 font-medium">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-primary transition-colors">Cookies Settings</a>
+          <div className="flex flex-wrap justify-center gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
+            <a href="#" className="hover:text-primary transition-all">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-all">Terms of Use</a>
+            <a href="#" className="hover:text-primary transition-all">Cookie Config</a>
           </div>
         </div>
       </div>

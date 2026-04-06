@@ -15,17 +15,19 @@ createRoot(document.getElementById("root")).render(
         toastOptions={{
           duration: 3000,
           style: {
-            borderRadius: '16px',
+            borderRadius: '24px',
             background: '#1e293b',
             color: '#fff',
-            fontWeight: '600',
+            fontWeight: '700',
             fontSize: '14px',
-            padding: '14px 20px',
+            padding: '16px 24px',
+            border: '1px solid rgba(255,255,255,0.05)',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
           },
           success: {
             iconTheme: {
-              primary: '#4f46e5',
-              secondary: '#fff',
+              primary: '#2dd4bf',
+              secondary: '#042f2e',
             },
           },
         }}

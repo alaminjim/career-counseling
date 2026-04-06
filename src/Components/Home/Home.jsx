@@ -2,15 +2,12 @@ import { Outlet, Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import BackToTop from "../BackToTop/BackToTop";
-import Title from "../Title/Title";
-import { motion as _motion, useInView, AnimatePresence } from "framer-motion";
+import { motion as _motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
-  ArrowRight, CheckCircle2, Sparkles, Target, Zap, Users, Award,
-  Globe, TrendingUp, Star, ChevronDown, Search, FileText, Headphones,
-  GraduationCap, Rocket, MessageCircle, Quote, Play
+  ArrowRight, CheckCircle2, Sparkles, Target, Zap, Users,
+  TrendingUp, Award, Globe, FileText, ChevronDown, MessageCircle, Play
 } from "lucide-react";
-import heroImage from "../../assets/The Little Things - Working.png";
 
 /* ─── Animated Counter Hook ─── */
 const useCounter = (end, duration = 2000, startOnView = true) => {
@@ -36,98 +33,11 @@ const useCounter = (end, duration = 2000, startOnView = true) => {
 
 /* ─── Stats Data ─── */
 const statsData = [
-  { value: 10000, suffix: "+", label: "Professionals Guided", icon: Users, color: "text-primary", bg: "bg-primary/10" },
-  { value: 98, suffix: "%", label: "Success Rate", icon: TrendingUp, color: "text-emerald-500", bg: "bg-emerald-500/10" },
-  { value: 250, suffix: "+", label: "Expert Counselors", icon: Award, color: "text-amber-500", bg: "bg-amber-500/10" },
-  { value: 50, suffix: "+", label: "Countries Reached", icon: Globe, color: "text-sky-500", bg: "bg-sky-500/10" },
+  { value: 10000, suffix: "+", label: "Professionals Guided", icon: Users, color: "text-indigo-600", bg: "bg-indigo-50" },
+  { value: 98, suffix: "%", label: "Success Rate", icon: TrendingUp, color: "text-emerald-500", bg: "bg-emerald-50" },
+  { value: 250, suffix: "+", label: "Expert Counselors", icon: Award, color: "text-amber-500", bg: "bg-amber-50" },
+  { value: 50, suffix: "+", label: "Countries Reached", icon: Globe, color: "text-sky-500", bg: "bg-sky-50" },
 ];
-
-/* ─── How It Works Steps ─── */
-const steps = [
-  { icon: Search, title: "Discover", desc: "Take our AI-powered assessment to uncover your strengths and ideal career paths.", color: "from-primary to-indigo-400" },
-  { icon: FileText, title: "Plan", desc: "Get a personalized career roadmap crafted by industry experts.", color: "from-sky-500 to-cyan-400" },
-  { icon: Headphones, title: "Execute", desc: "Work 1-on-1 with certified counselors to build skills and confidence.", color: "from-emerald-500 to-teal-400" },
-  { icon: Rocket, title: "Succeed", desc: "Land your dream role with our resume, interview & negotiation coaching.", color: "from-amber-500 to-orange-400" },
-];
-
-/* ─── Testimonials Data ─── */
-const testimonials = [
-  {
-    name: "Sarah Chen",
-    role: "Product Manager at Google",
-    avatar: "https://ui-avatars.com/api/?name=Sarah+Chen&background=4f46e5&color=fff&bold=true",
-    comment: "CareerPath completely transformed my career trajectory. Within 3 months of their coaching, I transitioned from junior developer to PM at Google. The personalized roadmap was invaluable.",
-    rating: 5,
-  },
-  {
-    name: "James Mitchell",
-    role: "Senior UX Designer at Apple",
-    avatar: "https://ui-avatars.com/api/?name=James+Mitchell&background=0ea5e9&color=fff&bold=true",
-    comment: "The resume workshop alone was worth 10x the investment. My interview callback rate went from 5% to 45%. The counselors truly understand the tech industry inside out.",
-    rating: 5,
-  },
-  {
-    name: "Priya Sharma",
-    role: "Data Scientist at Netflix",
-    avatar: "https://ui-avatars.com/api/?name=Priya+Sharma&background=f59e0b&color=fff&bold=true",
-    comment: "I was stuck in my career for 2 years. CareerPath helped me identify my strengths and pivot into data science. Best professional decision I ever made!",
-    rating: 5,
-  },
-  {
-    name: "David Rodriguez",
-    role: "Engineering Lead at Microsoft",
-    avatar: "https://ui-avatars.com/api/?name=David+Rodriguez&background=10b981&color=fff&bold=true",
-    comment: "The mock interview sessions were incredibly realistic. I went into my final interview at Microsoft feeling completely prepared and confident. Landed the offer the same week!",
-    rating: 5,
-  },
-];
-
-/* ─── FAQ Data ─── */
-const faqs = [
-  { q: "How does the career counseling process work?", a: "Our process begins with a comprehensive assessment of your skills, interests, and goals. You're then matched with a certified counselor who creates a personalized roadmap. Sessions are conducted via video call, and you'll receive ongoing support through our platform." },
-  { q: "What qualifications do your counselors have?", a: "All counselors hold advanced degrees and have 10+ years of industry experience. They're certified in career coaching methodologies and undergo continuous training to stay current with market trends." },
-  { q: "How long until I see results?", a: "Most clients see tangible results within 4-8 weeks – whether that's interview callbacks, skill improvements, or clarity on their career direction. Our average client lands their target role within 3 months." },
-  { q: "Can I get a refund if I'm not satisfied?", a: "Absolutely! We offer a 100% satisfaction guarantee. If you're not seeing progress after your first 3 sessions, we'll refund your investment in full – no questions asked." },
-  { q: "Do you offer corporate or team packages?", a: "Yes! We have dedicated enterprise solutions for companies looking to invest in their employees' professional development. Contact our sales team for custom pricing and packages." },
-];
-
-/* ─── FAQ Item Component ─── */
-const FAQItem = ({ faq, index, isOpen, onToggle }) => (
-  <_motion.div
-    initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay: index * 0.08 }}
-    className="faq-item border border-neutral/5 rounded-2xl overflow-hidden"
-  >
-    <button
-      onClick={onToggle}
-      className="w-full flex items-center justify-between p-6 text-left group cursor-pointer"
-    >
-      <span className="font-bold text-lg pr-8 group-hover:text-primary transition-colors">{faq.q}</span>
-      <_motion.div
-        animate={{ rotate: isOpen ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
-        className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${isOpen ? 'bg-primary text-white' : 'bg-neutral/5 text-neutral/40'}`}
-      >
-        <ChevronDown size={20} />
-      </_motion.div>
-    </button>
-    <AnimatePresence>
-      {isOpen && (
-        <_motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="overflow-hidden"
-        >
-          <p className="px-6 pb-6 text-neutral/60 leading-relaxed text-[15px]">{faq.a}</p>
-        </_motion.div>
-      )}
-    </AnimatePresence>
-  </_motion.div>
-);
 
 const StatCard = ({ stat, index }) => {
   const { count, ref } = useCounter(stat.value, 2200);
@@ -139,154 +49,140 @@ const StatCard = ({ stat, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="text-center group flex flex-col items-center justify-center p-6 glass-card rounded-2xl"
+      className="text-center group flex flex-col items-center justify-center p-8 bg-white border border-gray-100 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500"
     >
-      <div className={`w-16 h-16 ${stat.bg} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}>
-        <Icon size={28} className={stat.color} />
+      <div className={`w-14 h-14 ${stat.bg} rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+        <Icon size={24} className={stat.color} />
       </div>
-      <p className="text-4xl md:text-5xl font-black tracking-tight text-neutral">
+      <p className="text-4xl md:text-5xl font-black tracking-tight text-gray-900">
         {count.toLocaleString()}{stat.suffix}
       </p>
-      <p className="font-medium text-neutral/60 mt-1">{stat.label}</p>
+      <p className="font-bold text-gray-400 mt-2 text-sm uppercase tracking-widest">{stat.label}</p>
     </_motion.div>
   );
 };
 
-/* ─── MAIN HOME COMPONENT ─── */
+/* ─── FAQ Data ─── */
+const faqs = [
+  { q: "How does the career counseling process work?", a: "Our process begins with a comprehensive assessment of your skills, interests, and goals. You're then matched with a certified counselor who creates a personalized roadmap. Sessions are conducted via video call, and you'll receive ongoing support through our platform." },
+  { q: "What qualifications do your counselors have?", a: "All counselors hold advanced degrees and have 10+ years of industry experience. They're certified in career coaching methodologies and undergo continuous training to stay current with market trends." },
+  { q: "How long until I see results?", a: "Most clients see tangible results within 4-8 weeks – whether that's interview callbacks, skill improvements, or clarity on their career direction. Our average client lands their target role within 3 months." },
+  { q: "Can I get a refund if I'm not satisfied?", a: "Absolutely! We offer a 100% satisfaction guarantee. If you're not seeing progress after your first 3 sessions, we'll refund your investment in full – no questions asked." },
+];
+
 const Home = () => {
   const [openFAQ, setOpenFAQ] = useState(0);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-
-  // Auto-cycle testimonials
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
-    <div className="min-h-screen bg-b1 flex flex-col selection:bg-primary/20 selection:text-primary">
+    <div className="min-h-screen bg-[#F9FAFB] flex flex-col selection:bg-indigo-100 selection:text-indigo-700 fade-in">
       <NavBar />
       
-      <main className="flex-grow pt-24">
+      <main className="flex-grow overflow-x-hidden">
         {/* ════════════════════════════════════════════
-            SECTION 1: DYNAMIC HERO
+            SECTION 1: PREMIUM HERO
         ════════════════════════════════════════════ */}
-        <section className="relative overflow-hidden bg-transparent pb-20 pt-10">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-5 pointer-events-none">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-[120px]"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full blur-[120px]"></div>
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <section className="relative pt-32 pb-32 lg:pt-48 lg:pb-56 bg-white overflow-hidden">
+          {/* Background Decorative Blob */}
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-50/50 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 -z-10"></div>
+          
+          <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <_motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="space-y-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-10"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">
-                <Sparkles size={16} />
-                <span>Trusted by 10,000+ Professionals</span>
+              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-widest border border-indigo-100">
+                <Sparkles size={14} className="animate-pulse" />
+                <span>The Future of Career Guidance</span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight">
-                Design Your <span className="gradient-text font-display">Future</span> With Expert Guidance
+              <h1 className="text-6xl md:text-8xl font-black leading-[1.05] tracking-tight text-gray-900">
+                Unlock Your <br />
+                <span className="text-indigo-600 italic">Full Potential</span>
               </h1>
               
-              <p className="text-xl text-neutral/70 leading-relaxed max-w-xl">
-                Unlock your full potential with personalized career roadmaps, industry-leading counseling, and strategic professional development.
+              <p className="text-xl text-gray-500 leading-relaxed max-w-xl font-medium">
+                Navigate your professional journey with precision-engineered roadmaps, expert counseling, and data-driven career diagnostics.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link to="/services" className="btn-premium flex items-center justify-center gap-2">
-                  Explore Services <ArrowRight size={18} />
-                </Link>
-                <Link to="/career" className="px-8 py-4 rounded-xl border-2 border-neutral/10 font-semibold hover:bg-neutral/5 transition-all duration-300 flex items-center justify-center gap-2">
-                  Take Skill Test <Zap size={18} className="text-accent" />
-                </Link>
-              </div>
-
-              <div className="grid grid-cols-2 gap-6 pt-8 border-t border-neutral/5">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center text-success">
-                    <CheckCircle2 size={20} />
+              <div className="flex items-center gap-4 pt-4">
+                <div className="flex -space-x-3">
+                  {[...Array(4)].map((_, i) => (
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
+                      <img src={`https://i.pravatar.cc/150?u=${i + 20}`} alt="" />
+                    </div>
+                  ))}
+                  <div className="w-10 h-10 rounded-full border-2 border-white bg-indigo-600 flex items-center justify-center text-white text-[10px] font-bold shadow-sm">
+                    +2k
                   </div>
-                  <span className="font-medium text-neutral/80">Certified Experts</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-success/10 flex items-center justify-center text-success">
-                    <CheckCircle2 size={20} />
-                  </div>
-                  <span className="font-medium text-neutral/80">Lifetime Support</span>
-                </div>
+                <p className="text-sm font-semibold text-gray-400">Join 2,500+ successful professionals</p>
               </div>
             </_motion.div>
 
             <_motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative p-10 lg:p-14 bg-gray-50 rounded-[3.5rem] border border-gray-100 shadow-inner"
             >
-              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
-                <img 
-                  src={heroImage} 
-                  alt="Professional Workspace" 
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-b1/80 to-transparent"></div>
+              <div className="relative z-10 space-y-8 bg-white p-10 lg:p-12 rounded-[2.5rem] shadow-2xl shadow-indigo-100 border border-indigo-50">
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-black text-gray-900 leading-tight tracking-tight">Start Your Transformation</h3>
+                  <p className="text-gray-500 font-medium text-lg leading-relaxed">Enter your professional email to initialize your baseline diagnostic assessment.</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="relative">
+                    <input 
+                      type="email" 
+                      placeholder="work@yourcompany.com" 
+                      className="input-premium pr-36 py-5 text-lg"
+                    />
+                    <button className="absolute right-2 top-2 bottom-2 bg-[#10B981] hover:bg-[#059669] text-white font-bold rounded-2xl px-7 transition-all shadow-lg shadow-emerald-100 active:scale-95">
+                      Join Now
+                    </button>
+                  </div>
+                  <div className="flex items-center justify-center gap-6 pt-2">
+                    <p className="text-[11px] text-gray-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                      <Zap size={10} className="text-amber-400" /> No credit card required
+                    </p>
+                    <p className="text-[11px] text-gray-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                      <Award size={10} className="text-indigo-400" /> GDPR Compliant
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-8 border-t border-gray-100 grid grid-cols-2 gap-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+                      <CheckCircle2 size={18} />
+                    </div>
+                    <span className="text-xs font-bold text-gray-700 uppercase tracking-wide">Expert Review</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600">
+                      <CheckCircle2 size={18} />
+                    </div>
+                    <span className="text-xs font-bold text-gray-700 uppercase tracking-wide">Elite Network</span>
+                  </div>
+                </div>
               </div>
               
-              {/* Decorative Elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10"></div>
-              <div className="absolute -bottom-10 -left-10 p-6 glass-card rounded-2xl shadow-2xl flex items-center gap-4 z-20 hidden md:flex animate-float">
-                <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-primary-content shadow-lg shadow-primary/20">
-                  <Target size={24} />
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-white leading-none">98%</p>
-                  <p className="text-[10px] text-primary font-black uppercase tracking-widest mt-1">Success Rate</p>
-                </div>
-              </div>
-
-              {/* New: Floating review badge */}
-              <_motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 3, delay: 1 }}
-                className="absolute -top-4 -right-4 md:right-8 md:top-8 px-5 py-4 glass-card rounded-2xl shadow-2xl z-20 hidden md:flex items-center gap-4 border border-white/10"
-              >
-                <div className="flex -space-x-2">
-                  <div className="w-9 h-9 rounded-full bg-primary/20 border-2 border-b1"></div>
-                  <div className="w-9 h-9 rounded-full bg-slate-700 border-2 border-b1"></div>
-                  <div className="w-9 h-9 rounded-full bg-teal-900 border-2 border-b1"></div>
-                </div>
-                <div>
-                  <div className="flex gap-0.5 text-primary">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
-                  </div>
-                  <p className="text-[10px] font-black text-white/40 uppercase tracking-widest mt-1">2,500+ Reviews</p>
-                </div>
-              </_motion.div>
+              {/* Abstract Background Shapes */}
+              <div className="absolute -top-10 -right-10 w-48 h-48 bg-indigo-100 rounded-full blur-3xl opacity-60 -z-10 animate-pulse"></div>
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-emerald-100 rounded-full blur-3xl opacity-60 -z-10"></div>
             </_motion.div>
           </div>
         </section>
 
         {/* ════════════════════════════════════════════
-            SECTION 2: MARQUEE BULLETIN
+            SECTION 2: ANIMATED STATS
         ════════════════════════════════════════════ */}
-        <Title />
-
-        {/* ════════════════════════════════════════════
-            SECTION 3: ANIMATED STATS COUNTER
-        ════════════════════════════════════════════ */}
-        <section className="py-20 bg-transparent relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary rounded-full blur-[200px]"></div>
-          </div>
-          <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
+        <section className="py-24 bg-[#F9FAFB]">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {statsData.map((stat, index) => (
                 <StatCard key={index} stat={stat} index={index} />
               ))}
@@ -295,214 +191,146 @@ const Home = () => {
         </section>
 
         {/* ════════════════════════════════════════════
-            SECTION 4: CAREER SERVICES (Outlet)
+            SECTION 3: FEATURES GRID
         ════════════════════════════════════════════ */}
-        <section className="bg-b2/40 min-h-[400px]">
-          <Outlet />
-        </section>
-
-        {/* ════════════════════════════════════════════
-            SECTION 5: HOW IT WORKS
-        ════════════════════════════════════════════ */}
-        <section className="py-24 bg-transparent relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <_motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center max-w-2xl mx-auto mb-20 space-y-4"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.2em]">
-                <Play size={14} className="fill-current" />
+        <section className="py-32 bg-white">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="text-center max-w-3xl mx-auto mb-24 space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-black uppercase tracking-[0.2em] border border-emerald-100">
+                <Target size={14} />
                 <span>Our Methodology</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white">
-                How <span className="text-primary">CareerPath</span> Works
+              <h2 className="text-5xl md:text-7xl font-black tracking-tight text-gray-900 leading-tight">
+                Strategic Career <br /><span className="text-indigo-600">Infrastructure</span>
               </h2>
-              <p className="text-slate-400 text-lg">
-                Four strategic steps to accelerate your professional growth.
+              <p className="text-gray-500 text-xl font-medium leading-relaxed">
+                We provide the critical tools and elite counseling necessary to navigate the modern professional landscape.
               </p>
-            </_motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-              {/* Connecting Line (desktop) */}
-              <div className="hidden lg:block absolute top-16 left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-primary via-sky-400 via-emerald-400 to-amber-400 opacity-20"></div>
-              
-              {steps.map((step, idx) => {
-                const Icon = step.icon;
-                return (
-                  <_motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.15 }}
-                    className="relative text-center group"
-                  >
-                    <div className="relative z-10 mx-auto mb-8">
-                      <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon size={32} />
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-neutral rounded-full flex items-center justify-center text-white text-xs font-black shadow-lg">
-                        {idx + 1}
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 font-display">{step.title}</h3>
-                    <p className="text-neutral/50 text-sm leading-relaxed max-w-xs mx-auto">{step.desc}</p>
-                  </_motion.div>
-                );
-              })}
             </div>
-          </div>
-        </section>
 
-        {/* ════════════════════════════════════════════
-            SECTION 6: TESTIMONIALS
-        ════════════════════════════════════════════ */}
-        <section className="py-24 bg-b2/30 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-[150px] pointer-events-none"></div>
-
-          <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <_motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center max-w-2xl mx-auto mb-16 space-y-4"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider">
-                <MessageCircle size={14} />
-                <span>Success Stories</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-                What Our <span className="gradient-text font-display">Clients</span> Say
-              </h2>
-              <p className="text-neutral/50 text-lg">
-                Real stories from real professionals who transformed their careers.
-              </p>
-            </_motion.div>
-
-            {/* Testimonial Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-              {/* Featured Testimonial */}
-              <AnimatePresence mode="wait">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+              {[
+                { title: "Career Strategy", icon: Users, desc: "1-on-1 intensive sessions with industry sector leads." },
+                { title: "ATS Optimization", icon: FileText, desc: "Architecting high-conversion professional identities." },
+                { title: "Mock Lab", icon: MessageCircle, desc: "High-fidelity behavioral and technical simulations." },
+                { title: "Diagnostics", icon: Target, desc: "Data-driven gap analysis & competitive assessment." }
+              ].map((feature, idx) => (
                 <_motion.div
-                  key={activeTestimonial}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5 }}
-                  className="glass-card rounded-[2.5rem] p-8 md:p-14 shadow-2xl relative overflow-hidden border border-white/5"
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -12 }}
+                  className="premium-card p-12 space-y-8 group cursor-pointer hover:border-indigo-200 border-2"
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
-                  <Quote className="text-primary/5 absolute top-8 right-10" size={120} />
-                  
-                  <div className="relative z-10 space-y-8">
-                    <div className="flex gap-1 text-amber-400">
-                      {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                        <Star key={i} size={20} fill="currentColor" />
-                      ))}
-                    </div>
-                    <p className="text-lg md:text-xl text-neutral/80 leading-relaxed font-medium italic">
-                      "{testimonials[activeTestimonial].comment}"
-                    </p>
-                    <div className="flex items-center gap-4 pt-4 border-t border-neutral/5">
-                      <img
-                        src={testimonials[activeTestimonial].avatar}
-                        alt={testimonials[activeTestimonial].name}
-                        className="w-14 h-14 rounded-full border-4 border-primary/10"
-                      />
-                      <div>
-                        <p className="font-bold text-lg">{testimonials[activeTestimonial].name}</p>
-                        <p className="text-primary text-sm font-semibold">{testimonials[activeTestimonial].role}</p>
-                      </div>
-                    </div>
+                  <div className="w-16 h-16 bg-gray-50 rounded-[1.5rem] flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 shadow-sm border border-gray-100">
+                    <feature.icon size={32} />
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-black text-gray-900">{feature.title}</h3>
+                    <p className="text-gray-500 font-medium leading-relaxed text-[15px]">{feature.desc}</p>
+                  </div>
+                  <div className="pt-4 flex items-center text-indigo-600 font-bold text-sm gap-2">
+                    Review Suite <ArrowRight size={16} />
                   </div>
                 </_motion.div>
-              </AnimatePresence>
-
-              {/* Testimonial Grid */}
-              <div className="grid grid-cols-1 gap-4">
-                {testimonials.map((t, idx) => (
-                  <_motion.button
-                    key={idx}
-                    onClick={() => setActiveTestimonial(idx)}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className={`w-full text-left p-5 rounded-2xl flex items-center gap-4 transition-all duration-300 cursor-pointer border ${
-                      activeTestimonial === idx
-                        ? 'bg-primary text-white border-primary shadow-lg shadow-primary/20'
-                        : 'bg-white border-neutral/5 hover:border-primary/20 hover:bg-primary/5'
-                    }`}
-                  >
-                    <img
-                      src={t.avatar}
-                      alt={t.name}
-                      className="w-12 h-12 rounded-full border-2 border-white/30"
-                    />
-                    <div className="flex-grow min-w-0">
-                      <p className="font-bold truncate">{t.name}</p>
-                      <p className={`text-sm truncate ${activeTestimonial === idx ? 'text-white/70' : 'text-neutral/50'}`}>{t.role}</p>
-                    </div>
-                    <div className="flex gap-0.5 flex-shrink-0">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={12} fill="currentColor" className={activeTestimonial === idx ? 'text-amber-300' : 'text-amber-400'} />
-                      ))}
-                    </div>
-                  </_motion.button>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* ════════════════════════════════════════════
-            SECTION 7: FAQ ACCORDION
+            SECTION 4: OUTLET (Services Display)
         ════════════════════════════════════════════ */}
-        <section className="py-24 bg-white">
-          <div className="max-w-4xl mx-auto px-4 md:px-8">
-            <_motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center max-w-2xl mx-auto mb-16 space-y-4"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                <GraduationCap size={14} />
-                <span>Knowledge Base</span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-                Frequently Asked <span className="gradient-text font-display">Questions</span>
-              </h2>
-              <p className="text-neutral/50 text-lg">
-                Everything you need to know about our services.
-              </p>
-            </_motion.div>
+        <section className="py-24 bg-[#F9FAFB] border-y border-gray-100">
+          <div className="max-w-7xl mx-auto px-6">
+            <Outlet />
+          </div>
+        </section>
 
-            <div className="space-y-4">
-              {faqs.map((faq, idx) => (
-                <FAQItem
-                  key={idx}
-                  faq={faq}
-                  index={idx}
-                  isOpen={openFAQ === idx}
-                  onToggle={() => setOpenFAQ(openFAQ === idx ? -1 : idx)}
-                />
-              ))}
+        {/* ════════════════════════════════════════════
+            SECTION 5: HIGH-CONVERSION CTA
+        ════════════════════════════════════════════ */}
+        <section className="py-32 px-6 md:px-12 relative">
+          <div className="absolute inset-0 bg-white -z-20"></div>
+          
+          <_motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-6xl mx-auto bg-indigo-600 rounded-[4rem] p-16 md:p-32 text-center relative overflow-hidden shadow-2xl shadow-indigo-200"
+          >
+            {/* Background Texture Overlay */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_left,#ffffff_0%,transparent_50%)]"></div>
+              <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-400 rounded-full blur-[120px]"></div>
             </div>
 
-            <_motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-center mt-12"
-            >
-              <p className="text-neutral/40 font-medium">
-                Still have questions? <Link to="/career" className="text-primary font-bold hover:underline underline-offset-4">Contact our team</Link>
+            <div className="relative z-10 max-w-3xl mx-auto space-y-12">
+              <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 text-white text-xs font-bold uppercase tracking-widest border border-white/20">
+                <Rocket size={14} />
+                <span>Immediate Engagement Available</span>
+              </div>
+              <h2 className="text-5xl md:text-8xl font-black tracking-tight text-white leading-[0.95]">
+                Ready to Scale <br />Your Career?
+              </h2>
+              <p className="text-indigo-100 text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+                Join our elite professional community and receive the strategic advantage required to dominate your industry.
               </p>
-            </_motion.div>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+                <button className="btn-cta bg-[#10B981] hover:bg-[#0fd695] text-white px-14 py-6 rounded-[2rem] text-xl font-black shadow-2xl active:scale-95 transition-all">
+                  Initialize Setup
+                </button>
+                <button className="px-14 py-6 rounded-[2rem] text-xl font-black text-white bg-indigo-700 hover:bg-indigo-800 transition-all border border-indigo-400/30 active:scale-95">
+                  Contact Specialist
+                </button>
+              </div>
+            </div>
+          </_motion.div>
+        </section>
+
+        {/* ════════════════════════════════════════════
+            SECTION 6: FAQ ACCORDION
+        ════════════════════════════════════════════ */}
+        <section className="py-32 bg-white">
+          <div className="max-w-4xl mx-auto px-6 md:px-12">
+            <div className="text-center mb-20 space-y-4">
+              <p className="text-indigo-600 font-black uppercase tracking-[0.3em] text-[11px]">Knowledge Architecture</p>
+              <h2 className="text-5xl font-black tracking-tight text-gray-900">Operations FAQ</h2>
+            </div>
+
+            <div className="space-y-6">
+              {faqs.map((faq, idx) => (
+                <_motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="premium-card overflow-hidden border-2 border-gray-50 hover:border-indigo-100 transition-colors"
+                >
+                  <button
+                    onClick={() => setOpenFAQ(openFAQ === idx ? -1 : idx)}
+                    className="w-full flex items-center justify-between p-10 text-left group"
+                  >
+                    <span className="font-black text-xl text-gray-900 group-hover:text-indigo-600 transition-colors pr-8">{faq.q}</span>
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${openFAQ === idx ? 'bg-indigo-600 text-white shadow-xl rotate-180' : 'bg-gray-50 text-gray-400 group-hover:bg-indigo-50 group-hover:text-indigo-400'}`}>
+                      <ChevronDown size={24} />
+                    </div>
+                  </button>
+                  {openFAQ === idx && (
+                    <_motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      className="px-10 pb-10"
+                    >
+                      <p className="text-gray-500 font-medium text-lg leading-relaxed border-t border-gray-50 pt-8">{faq.a}</p>
+                    </_motion.div>
+                  )}
+                </_motion.div>
+              ))}
+            </div>
           </div>
         </section>
       </main>

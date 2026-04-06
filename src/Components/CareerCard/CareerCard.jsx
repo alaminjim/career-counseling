@@ -7,28 +7,28 @@ const CareerCard = () => {
   const career = useLoaderData();
 
   return (
-    <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto selection:bg-primary/20 selection:text-primary">
+    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto selection:bg-indigo-100 selection:text-indigo-700">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
         <div className="max-w-2xl space-y-6">
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-xl bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] border border-primary/20 shadow-lg shadow-primary/5">
+          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-xl bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] border border-indigo-100 shadow-sm">
             <Layers size={14} />
-            <span>Executive Intelligence Tier</span>
+            <span>Premium Service Nodes</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white">
-            Our Elite <span className="text-primary italic drop-shadow-glow">Success Nodes</span>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-gray-900 leading-tight">
+            Our Elite <span className="text-indigo-600 italic">Success Assets</span>
           </h2>
-          <p className="text-slate-500 text-xl leading-relaxed font-bold italic">
-            Precision counseling and strategic asset building designed to accelerate your position within the global professional hierarchy.
+          <p className="text-gray-500 text-xl leading-relaxed font-semibold">
+            Precision-engineered career diagnostics and strategic counseling designed to accelerate your position in the global job market.
           </p>
         </div>
         
         <Link 
           to="/services" 
-          className="group flex items-center gap-4 font-black uppercase tracking-[0.2em] text-xs text-primary hover:text-white transition-all border-b-2 border-primary/20 pb-2"
+          className="group flex items-center gap-4 font-black uppercase tracking-[0.2em] text-xs text-indigo-600 hover:text-indigo-800 transition-all border-b-2 border-indigo-100 pb-2"
         >
           Access Full catalog 
-          <div className="w-12 h-12 rounded-2xl border-2 border-white/5 flex items-center justify-center group-hover:bg-primary group-hover:text-b1 group-hover:border-primary transition-all duration-500 shadow-inner bg-white/5">
+          <div className="w-12 h-12 rounded-2xl border-2 border-gray-100 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 transition-all duration-500 shadow-sm bg-white">
             <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
           </div>
         </Link>
@@ -43,22 +43,22 @@ const CareerCard = () => {
 
       {/* Trust Banner / Bottom CTA */}
       <_motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.98 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        className="mt-24 p-10 md:p-16 rounded-[3.5rem] bg-[#1e293b] text-white relative overflow-hidden border border-white/10 shadow-2xl shadow-black/40"
+        className="mt-32 p-10 md:p-20 rounded-[4rem] bg-indigo-600 text-white relative overflow-hidden shadow-2xl shadow-indigo-100"
       >
-        <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-400/20 rounded-full blur-[100px] pointer-events-none"></div>
         
         <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="space-y-4 text-center lg:text-left">
-            <h3 className="text-3xl md:text-4xl font-black tracking-tight flex items-center justify-center lg:justify-start gap-4">
-              Strategic Navigation Required? <Sparkles className="text-primary drop-shadow-glow" size={32} />
+          <div className="space-y-6 text-center lg:text-left max-w-2xl">
+            <h3 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">
+              Ready for Strategic <br />Career Navigation?
             </h3>
-            <p className="text-slate-400 text-lg font-bold italic">Initialize a priority 15-minute diagnostic session with our chief career strategist.</p>
+            <p className="text-indigo-100 text-lg font-medium opacity-90">Initialize a 20-minute baseline diagnostic session with our lead industry strategist.</p>
           </div>
-          <button className="btn-premium px-12 py-5 rounded-2xl text-xl font-black uppercase tracking-widest whitespace-nowrap shadow-2xl">
+          <button className="btn-cta bg-[#10B981] hover:bg-[#059669] text-white px-12 py-6 rounded-[2.5rem] text-xl font-black shadow-2xl transition-all active:scale-95 whitespace-nowrap">
             Authorize Diagnostic
           </button>
         </div>

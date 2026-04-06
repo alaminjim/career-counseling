@@ -9,25 +9,25 @@ import {
 
 const Career = () => {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-[#F9FAFB] flex flex-col selection:bg-indigo-100 selection:text-indigo-700">
       <NavBar />
       
-      <main className="flex-grow pt-32 pb-20 max-w-7xl mx-auto px-4 md:px-8 w-full">
+      <main className="flex-grow pt-32 pb-20 max-w-7xl mx-auto px-6 md:px-12 w-full">
         {/* Header Section */}
-        <section className="text-center space-y-6 mb-20">
+        <section className="text-center space-y-8 mb-24">
           <_motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20 uppercase tracking-widest"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black border border-indigo-100 uppercase tracking-[0.2em]"
           >
-            <Sparkles size={16} />
-            <span>360° Career Ecosystem</span>
+            <Sparkles size={14} />
+            <span>360° Career Intelligence</span>
           </_motion.div>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight font-display text-neutral uppercase">
-            Complete <span className="text-primary italic">Career</span> Solutions
+          <h1 className="text-5xl md:text-8xl font-black tracking-tight text-gray-900 leading-tight">
+            Holistic <span className="text-indigo-600">Career</span> Systems
           </h1>
-          <p className="text-neutral/50 max-w-3xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
-            At TEAM NM, we offer a comprehensive support system through specialized online guidance, immersive offline workshops, and exclusive member benefits.
+          <p className="text-gray-500 max-w-3xl mx-auto text-xl md:text-2xl font-medium leading-relaxed">
+            We provide a comprehensive ecosystem through specialized digital strategy, immersive regional workshops, and elite circle benefits.
           </p>
         </section>
 
@@ -36,31 +36,31 @@ const Career = () => {
           {/* Online Services */}
           <_motion.div 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="group bg-white rounded-[2.5rem] p-8 shadow-sm border border-neutral/5 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 overflow-hidden relative"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group bg-white rounded-[3rem] p-10 shadow-2xl shadow-indigo-100/20 border border-gray-50 hover:border-indigo-100 transition-all duration-500 overflow-hidden relative"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-full blur-3xl group-hover:bg-indigo-100 transition-colors"></div>
             
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:rotate-6 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-indigo-600 flex items-center justify-center text-white mb-10 shadow-xl shadow-indigo-100 group-hover:scale-110 transition-transform">
               <Laptop size={32} />
             </div>
             
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold font-display leading-tight">Online <span className="text-primary">Learning</span> & Growth</h3>
-              <p className="text-neutral/60 text-sm leading-relaxed">
-                Expert guidance delivered straight to your screen, ensuring career progression from the comfort of your sanctuary.
+            <div className="space-y-6">
+              <h3 className="text-3xl font-black text-gray-900 leading-tight">Digital <span className="text-indigo-600">Strategy</span> Hub</h3>
+              <p className="text-gray-500 text-sm leading-relaxed font-bold">
+                Elite guidance delivered straight to your workstation, ensuring career progression from any geographical node.
               </p>
               
-              <ul className="space-y-3 pt-6 border-t border-neutral/5">
+              <ul className="space-y-4 pt-8 border-t border-gray-50">
                 {[
-                  "Virtual 1-on-1 Counseling",
-                  "Skill Development Webinars",
-                  "Interactive AI Mock Interviews",
-                  "Global Networking Access"
+                  "Virtual 1-on-1 Strategic Counseling",
+                  "Elite Skill Development Webinars",
+                  "Interactive AI Diagnostic Interviews",
+                  "Global Intelligence Network Access"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm font-bold text-neutral/80">
-                    <CheckCircle2 size={18} className="text-primary" /> {item}
+                  <li key={i} className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest text-gray-400 group-hover:text-gray-900 transition-colors">
+                    <CheckCircle2 size={18} className="text-indigo-600 flex-shrink-0" /> {item}
                   </li>
                 ))}
               </ul>
@@ -70,31 +70,32 @@ const Career = () => {
           {/* Offline Workshops */}
           <_motion.div 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="group bg-neutral text-white rounded-[2.5rem] p-8 shadow-2xl border border-white/5 hover:scale-[1.02] transition-all duration-500 overflow-hidden relative"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="group bg-gray-900 text-white rounded-[3rem] p-10 shadow-2xl shadow-gray-200 border border-white/5 hover:scale-[1.02] transition-all duration-500 overflow-hidden relative"
           >
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none"></div>
             
-            <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-indigo-600 flex items-center justify-center text-white mb-10 shadow-2xl shadow-indigo-900 group-hover:scale-110 transition-transform">
               <Users size={32} />
             </div>
             
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold font-display leading-tight italic">Personalized <span className="text-primary">In-Person</span> Support</h3>
-              <p className="text-neutral-400 text-sm leading-relaxed">
-                Immersive workshops and networking events designed for high-impact physical professional development.
+            <div className="space-y-6">
+              <h3 className="text-3xl font-black leading-tight">Immersive <span className="text-emerald-400 italic">Regional</span> Briefings</h3>
+              <p className="text-gray-400 text-sm leading-relaxed font-bold">
+                High-impact physical workshops and elite networking events designed for rapid professional development.
               </p>
               
-              <ul className="space-y-3 pt-6 border-t border-white/10">
+              <ul className="space-y-4 pt-8 border-t border-white/10">
                 {[
-                  "Hands-on Bootcamps",
-                  "Resume Lab Sessions",
-                  "Corporate Networking Events",
-                  "Public Speaking Training"
+                  "Hands-on Strategic Bootcamps",
+                  "Physical Portfolio Labs",
+                  "Executive Networking Summits",
+                  "High-Stakes Public Speaking"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm font-bold text-white/80">
-                    <Zap size={18} className="text-primary" /> {item}
+                  <li key={i} className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest text-gray-300">
+                    <Zap size={18} className="text-emerald-400 flex-shrink-0" /> {item}
                   </li>
                 ))}
               </ul>
@@ -104,31 +105,32 @@ const Career = () => {
           {/* Exclusive Membership */}
           <_motion.div 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="group bg-white rounded-[2.5rem] p-8 shadow-sm border border-neutral/5 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500 overflow-hidden relative"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="group bg-white rounded-[3rem] p-10 shadow-2xl shadow-indigo-100/20 border border-gray-50 hover:border-emerald-100 transition-all duration-500 overflow-hidden relative"
           >
-            <div className="absolute top-0 left-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl group-hover:bg-accent/10 transition-colors"></div>
+            <div className="absolute top-0 left-0 w-32 h-32 bg-emerald-50 rounded-full blur-3xl group-hover:bg-emerald-100 transition-colors"></div>
             
-            <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-8 group-hover:-rotate-6 transition-transform">
+            <div className="w-16 h-16 rounded-2xl bg-emerald-500 flex items-center justify-center text-white mb-10 shadow-xl shadow-emerald-100 group-hover:-rotate-6 transition-transform">
               <Award size={32} />
             </div>
             
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold font-display leading-tight">Exclusive <span className="text-accent">Member</span> Inner Circle</h3>
-              <p className="text-neutral/60 text-sm leading-relaxed">
-                Premium membership program for dedicated professionals seeking an unfair advantage in the job market.
+            <div className="space-y-6 text-gray-900">
+              <h3 className="text-3xl font-black leading-tight">Exclusive <span className="text-emerald-500">Elite</span> Inner Circle</h3>
+              <p className="text-gray-500 text-sm leading-relaxed font-bold">
+                Premium membership program for dedicated professionals seeking a distinct competitive advantage.
               </p>
               
-              <ul className="space-y-3 pt-6 border-t border-neutral/5">
+              <ul className="space-y-4 pt-8 border-t border-gray-50">
                 {[
-                  "Priority Resume Audits",
-                  "LinkedIn Profile SEO",
-                  "Private Slack Community",
-                  "Direct Access to Mentors"
+                  "Priority Strategic Audits",
+                  "Enterprise Profile SEO",
+                  "Private Intelligence Community",
+                  "Direct Access to Board Mentors"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm font-bold text-neutral/80">
-                    <CheckCircle2 size={18} className="text-accent" /> {item}
+                  <li key={i} className="flex items-center gap-4 text-[11px] font-black uppercase tracking-widest text-gray-400 group-hover:text-gray-900 transition-colors">
+                    <CheckCircle2 size={18} className="text-emerald-500 flex-shrink-0" /> {item}
                   </li>
                 ))}
               </ul>
@@ -138,17 +140,20 @@ const Career = () => {
 
         {/* Closing Banner */}
         <_motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-20 p-12 rounded-[3rem] bg-gradient-to-r from-primary to-secondary text-white text-center space-y-6"
+          className="mt-32 p-16 md:p-24 rounded-[4rem] bg-indigo-600 text-white text-center space-y-10 relative overflow-hidden shadow-2xl shadow-indigo-100"
         >
-          <h2 className="text-3xl md:text-5xl font-black font-display uppercase italic tracking-tighter">Ready to Accelerate?</h2>
-          <p className="text-white/80 max-w-xl mx-auto font-medium">Join thousands of others who fixed their career path with our expert guidance system.</p>
-          <div className="pt-4 flex justify-center">
-            <button className="bg-white text-primary px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-xl">
-              Become a Member Now
-            </button>
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 via-indigo-600 to-emerald-400 opacity-20 blur-[100px] pointer-events-none"></div>
+          <div className="relative z-10 space-y-6">
+            <h2 className="text-4xl md:text-7xl font-black tracking-tight leading-none uppercase">Ready to <span className="italic text-emerald-400">Accelerate?</span></h2>
+            <p className="text-indigo-100 max-w-2xl mx-auto text-lg md:text-xl font-bold">Join the thousands of professionals who successfully optimized their path through our strategic guidance system.</p>
+            <div className="pt-8 flex justify-center">
+              <button className="bg-[#10B981] hover:bg-[#0fd695] text-white px-14 py-5 rounded-2xl font-black uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-2xl shadow-black/20 active:scale-95 text-sm">
+                Become a Member Now
+              </button>
+            </div>
           </div>
         </_motion.div>
       </main>

@@ -24,16 +24,13 @@ const BackToTop = () => {
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.1, y: -5 }}
+          whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-2xl cursor-pointer transition-shadow duration-300 hover:shadow-primary/40"
-          style={{
-            background: "linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #0ea5e9 100%)",
-          }}
+          className="fixed bottom-10 right-10 z-50 w-16 h-16 rounded-[1.5rem] flex items-center justify-center text-white shadow-2xl shadow-indigo-200 cursor-pointer transition-all duration-300 bg-indigo-600 hover:bg-indigo-700"
           aria-label="Scroll to top"
         >
-          <ArrowUp size={22} strokeWidth={2.5} />
+          <ArrowUp size={28} strokeWidth={3} />
         </_motion.button>
       )}
     </AnimatePresence>

@@ -12,7 +12,7 @@ const Cards = ({ singleCard }) => {
     counselor,
     id,
     description,
-    rating = 4.8 // Fallback rating if not in data
+    rating = 4.8
   } = singleCard;
 
   return (
@@ -20,68 +20,71 @@ const Cards = ({ singleCard }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative glass-card rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl transition-all duration-700"
+      className="group premium-card overflow-hidden h-full flex flex-col hover:border-indigo-200"
     >
       {/* Image Section */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-60 overflow-hidden">
         <img 
           src={image} 
           alt={service_name} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-b1/90 via-b1/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent"></div>
         
-        <div className="absolute top-5 left-5 flex gap-2">
-          <span className="px-4 py-1.5 rounded-xl bg-primary/20 backdrop-blur-xl text-primary text-[10px] font-black uppercase tracking-widest border border-primary/30 shadow-lg">
+        <div className="absolute top-4 left-4">
+          <span className="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-[10px] font-black uppercase tracking-widest shadow-lg">
             {category}
           </span>
         </div>
         
-        <div className="absolute bottom-5 left-6 right-6 flex justify-between items-end text-white">
-          <div className="space-y-1">
-            <div className="flex items-center gap-1 text-primary">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} fill={i < Math.floor(rating) ? "currentColor" : "none"} className="drop-shadow-glow" />
-              ))}
-              <span className="text-white/60 text-[10px] font-black ml-2 uppercase tracking-widest">{rating} PV</span>
-            </div>
-            <h3 className="text-2xl font-black tracking-tighter leading-tight drop-shadow-lg">{service_name}</h3>
+        <div className="absolute bottom-4 right-4">
+          <div className="bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20 shadow-xl">
+            <span className="text-xl font-black text-indigo-600 tracking-tight">{pricing}</span>
           </div>
-          <div className="text-3xl font-black text-primary drop-shadow-glow">{pricing}</div>
         </div>
       </div>
 
       {/* Content Section */}
-      <div className="p-8 space-y-5">
-        <div className="flex items-center justify-between text-[11px] text-slate-400 font-black uppercase tracking-[0.1em]">
-          <div className="flex items-center gap-3 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
-            <User size={14} className="text-primary" />
+      <div className="p-8 flex flex-col flex-grow space-y-5 bg-white">
+        <div className="space-y-3">
+          <div className="flex items-center gap-1 text-amber-400">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} size={14} fill={i < Math.floor(rating) ? "currentColor" : "none"} />
+            ))}
+            <span className="text-gray-400 text-[10px] font-black ml-1 uppercase tracking-widest">{rating} PV Index</span>
+          </div>
+          <h3 className="text-2xl font-black tracking-tight text-gray-900 group-hover:text-indigo-600 transition-colors">{service_name}</h3>
+        </div>
+
+        <p className="text-gray-500 text-sm leading-relaxed line-clamp-3 font-medium">
+          {description}
+        </p>
+
+        <div className="flex items-center gap-6 text-[10px] text-gray-400 font-black uppercase tracking-widest pt-2">
+          <div className="flex items-center gap-2">
+            <User size={14} className="text-indigo-400" />
             <span>{counselor}</span>
           </div>
-          <div className="flex items-center gap-3 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
-            <Clock size={14} className="text-primary" />
+          <div className="flex items-center gap-2">
+            <Clock size={14} className="text-indigo-400" />
             <span>{duration}</span>
           </div>
         </div>
 
-        <p className="text-slate-400 text-sm leading-relaxed line-clamp-3 font-medium">
-          {description}
-        </p>
-
-        <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+        <div className="pt-6 mt-auto border-t border-gray-100 flex items-center justify-between">
           <Link 
             to={`/services/${id}`} 
-            className="text-primary font-black text-xs uppercase tracking-[0.2em] flex items-center gap-3 group/btn"
+            className="text-indigo-600 font-bold text-sm flex items-center gap-2 group/link"
           >
             <span>Learn More</span>
-            <ArrowRight size={16} className="transition-transform group-hover/btn:translate-x-2" />
+            <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
           </Link>
           
           <Link 
             to={`/services/${id}`}
-            className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-b1 transition-all duration-500 border border-primary/20"
+            className="w-11 h-11 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-500 border border-indigo-100"
           >
-            <ArrowRight size={22} />
+            <ArrowRight size={20} />
           </Link>
         </div>
       </div>

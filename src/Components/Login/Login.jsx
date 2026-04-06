@@ -85,17 +85,17 @@ const Login = () => {
             <div className="text-center space-y-6 mb-16">
               <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] border border-indigo-500/20">
                 <ShieldCheck size={14} />
-                <span>Security Protocol Active</span>
+                <span>Secure Login</span>
               </div>
               <h1 className="text-5xl font-black tracking-tight text-white leading-tight">
                 Welcome <span className="text-[#22D3EE] italic">Back</span>
               </h1>
-              <p className="text-[#9CA3AF] font-bold uppercase text-[10px] tracking-[0.4em]">Initialize Session Access</p>
+              <p className="text-[#9CA3AF] font-bold uppercase text-[10px] tracking-[0.4em]">Sign in to your account</p>
             </div>
 
             <form onSubmit={handelLogIn} className="space-y-10">
               <div className="space-y-4">
-                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 ml-6">Mail Protocol</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 ml-6">Email Address</label>
                 <div className="relative group">
                   <Mail className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
@@ -103,20 +103,20 @@ const Login = () => {
                     name="email"
                     required
                     className="input-premium pl-24 pr-8 py-6 uppercase tracking-widest text-[10px]"
-                    placeholder="official@corporation.com"
+                    placeholder="your.email@example.com"
                   />
                 </div>
               </div>
 
               <div className="space-y-4">
                 <div className="flex justify-between items-center px-6">
-                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500">Secure Token</label>
+                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500">Password</label>
                   <button 
                     type="button"
                     onClick={() => setShowForgotModal(true)}
                     className="text-[10px] font-black uppercase tracking-widest text-[#22D3EE] hover:text-[#22D3EE]/80 transition-colors cursor-pointer"
                   >
-                    Recover?
+                    Forgot?
                   </button>
                 </div>
                 <div className="relative group">
@@ -139,13 +139,13 @@ const Login = () => {
               </div>
 
               <button className="btn-cta w-full py-6 text-lg hover:scale-[1.01] shadow-2xl shadow-green-900/40 mt-6">
-                Authorize Session Access
+                Sign In
               </button>
             </form>
 
             <div className="relative my-16">
               <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[#374151]"></span></div>
-              <div className="relative flex justify-center text-[9px] font-black uppercase tracking-[0.5em]"><span className="bg-[#1F2937] px-8 text-gray-600">Alternate Gateway</span></div>
+              <div className="relative flex justify-center text-[9px] font-black uppercase tracking-[0.5em]"><span className="bg-[#1F2937] px-8 text-gray-600">Or continue with</span></div>
             </div>
 
             <button
@@ -158,11 +158,11 @@ const Login = () => {
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
-              Google SSO Access
+              Continue with Google
             </button>
 
             <p className="text-center mt-16 text-[10px] font-black text-gray-500 uppercase tracking-widest">
-              New Strategist? <Link to="/register" className="text-[#22D3EE] hover:text-[#22D3EE]/80 transition-colors border-b border-[#22D3EE]/20 pb-0.5 ml-2">Initialize Profile</Link>
+              New to CareerPath? <Link to="/register" className="text-[#22D3EE] hover:text-[#22D3EE]/80 transition-colors border-b border-[#22D3EE]/20 pb-0.5 ml-2">Create Account</Link>
             </p>
           </div>
         </_motion.div>
@@ -189,9 +189,9 @@ const Login = () => {
                 <KeyRound size={40} />
               </div>
               
-              <h3 className="text-4xl font-black text-white mb-4 tracking-tighter">Identity Recovery</h3>
+              <h3 className="text-4xl font-black text-white mb-4 tracking-tighter">Reset Password</h3>
               <p className="text-[#9CA3AF] font-bold mb-12 text-lg leading-relaxed">
-                Provide your secure email to receive an authentication bypass link.
+                Enter your email to receive a password reset link.
               </p>
 
               <form onSubmit={handlePasswordReset} className="space-y-10">
@@ -203,7 +203,7 @@ const Login = () => {
                     onChange={(e) => setResetEmail(e.target.value)}
                     required
                     className="input-premium pl-24 pr-8 py-6 uppercase tracking-widest text-[10px]"
-                    placeholder="recovery@secure.com"
+                    placeholder="your.email@example.com"
                   />
                 </div>
                 <button 
@@ -211,7 +211,7 @@ const Login = () => {
                   disabled={isResetting}
                   className="btn-cta w-full py-6 uppercase tracking-[0.2em] disabled:opacity-50 text-[11px]"
                 >
-                  {isResetting ? <span className="loading loading-spinner loading-md"></span> : "Dispatch Recovery Log"}
+                  {isResetting ? <span className="loading loading-spinner loading-md"></span> : "Send Reset Link"}
                 </button>
               </form>
             </_motion.div>

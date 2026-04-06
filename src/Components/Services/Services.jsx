@@ -57,37 +57,37 @@ const Services = () => {
   }, [cardsService, searchQuery, selectedCategory, sortBy]);
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB] flex flex-col selection:bg-indigo-100 selection:text-indigo-700">
+    <div className="min-h-screen bg-[#0B1020] flex flex-col selection:bg-indigo-500/30 selection:text-indigo-200">
       <NavBar />
       
-      <main className="flex-grow pt-32 pb-20 max-w-7xl mx-auto px-6 md:px-12 w-full">
+      <main className="flex-grow pt-32 pb-32 max-w-7xl mx-auto px-6 md:px-12 w-full">
         {/* Page Header */}
-        <section className="mb-16 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-widest border border-indigo-100">
+        <section className="mb-20 space-y-8">
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] border border-indigo-500/20">
             <Briefcase size={14} />
             <span>Complete Catalog</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight text-gray-900 leading-tight">
-            Career <span className="text-indigo-600">Excellence</span> Hub
+          <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white leading-[0.95]">
+            Career <span className="text-[#22D3EE]">Excellence</span> Hub
           </h1>
-          <p className="text-gray-500 max-w-2xl text-xl font-medium leading-relaxed">
+          <p className="text-[#9CA3AF] max-w-2xl text-xl font-bold leading-relaxed">
             Explore our comprehensive range of professional strategic counseling, elite asset building, and market-ready diagnostic programs.
           </p>
 
-          <div className="flex flex-col lg:flex-row gap-4 pt-10 border-t border-gray-100">
+          <div className="flex flex-col lg:flex-row gap-6 pt-12 border-t border-[#374151]">
             <div className="relative flex-grow group">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-indigo-600 transition-colors" size={20} />
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
               <input 
                 type="text" 
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search services, counselors, or keywords..." 
-                className="input-premium pl-14 py-5 shadow-sm"
+                className="input-premium pl-16 py-6 uppercase tracking-[0.1em] text-[10px]"
               />
               {searchQuery && (
                 <button 
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-6 top-1/2 -translate-y-1/2 text-indigo-600 font-bold text-xs uppercase tracking-widest"
+                  className="absolute right-8 top-1/2 -translate-y-1/2 text-[#22D3EE] font-black text-[10px] uppercase tracking-widest hover:text-white transition-colors"
                 >
                   Clear
                 </button>
@@ -96,14 +96,14 @@ const Services = () => {
             
             <button 
               onClick={() => setIsFilterOpen(!isFilterOpen)}
-              className={`px-8 py-5 rounded-2xl shadow-sm flex items-center justify-center gap-3 font-bold text-sm uppercase tracking-widest transition-all border ${
+              className={`px-10 py-6 rounded-2xl flex items-center justify-center gap-4 font-black text-[10px] uppercase tracking-[0.2em] transition-all border ${
                 isFilterOpen || selectedCategory !== "All Categories" || sortBy !== "default"
-                  ? "border-indigo-600 bg-indigo-50 text-indigo-600"
-                  : "border-gray-200 bg-white text-gray-500 hover:border-gray-300"
+                  ? "border-[#4F46E5] bg-[#4F46E5]/10 text-white shadow-2xl shadow-indigo-900/20"
+                  : "border-[#374151] bg-[#111827] text-gray-500 hover:border-gray-600 hover:text-white shadow-inner"
               }`}
             >
               <Filter size={18} /> 
-              <span>Filters</span>
+              <span>Global Filters</span>
               <ChevronDown size={16} className={`transition-transform duration-500 ${isFilterOpen ? "rotate-180" : ""}`} />
             </button>
           </div>
@@ -117,21 +117,21 @@ const Services = () => {
                 exit={{ opacity: 0, height: 0 }}
                 className="overflow-hidden"
               >
-                <div className="p-10 bg-white rounded-3xl border border-gray-100 shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="p-12 bg-[#1F2937] rounded-[3rem] border border-[#374151] shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-20">
                   {/* Category Filter */}
-                  <div className="space-y-6">
-                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 flex items-center gap-3">
-                      <Layers size={14} className="text-indigo-600" /> Sector Selection
+                  <div className="space-y-8">
+                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-600 flex items-center gap-4">
+                      <Layers size={14} className="text-indigo-400" /> Sector Selection
                     </label>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-3">
                       {categories.map((cat) => (
                         <button
                           key={cat}
                           onClick={() => setSelectedCategory(cat)}
-                          className={`px-5 py-3 rounded-xl text-xs font-bold transition-all ${
+                          className={`px-6 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
                             selectedCategory === cat
-                              ? "bg-indigo-600 text-white shadow-lg shadow-indigo-100"
-                              : "bg-gray-50 text-gray-500 hover:bg-gray-100"
+                              ? "bg-[#4F46E5] text-white shadow-xl shadow-indigo-900/40"
+                              : "bg-[#111827] text-gray-500 border border-[#374151] hover:text-white"
                           }`}
                         >
                           {cat}
@@ -141,11 +141,11 @@ const Services = () => {
                   </div>
 
                   {/* Sort By */}
-                  <div className="space-y-6">
-                    <label className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400 flex items-center gap-3">
-                      <SortAsc size={14} className="text-indigo-600" /> Organizational Logic
+                  <div className="space-y-8">
+                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-600 flex items-center gap-4">
+                      <SortAsc size={14} className="text-indigo-400" /> Organizational Logic
                     </label>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-3">
                       {[
                         { id: "default", label: "Priority Selection" },
                         { id: "rating", label: "Performance Rating" },
@@ -155,10 +155,10 @@ const Services = () => {
                         <button
                           key={sort.id}
                           onClick={() => setSortBy(sort.id)}
-                          className={`px-5 py-3 rounded-xl text-xs font-bold transition-all ${
+                          className={`px-6 py-4 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
                             sortBy === sort.id
-                              ? "bg-gray-900 text-white shadow-lg"
-                              : "bg-gray-50 text-gray-500 hover:bg-gray-100"
+                              ? "bg-[#16A34A] text-white shadow-xl shadow-green-900/40"
+                              : "bg-[#111827] text-gray-500 border border-[#374151] hover:text-white"
                           }`}
                         >
                           {sort.label}
@@ -171,8 +171,8 @@ const Services = () => {
             )}
           </AnimatePresence>
 
-          <div className="flex items-center justify-between text-sm font-bold text-gray-400 cursor-default">
-            <p>Showing <span className="text-gray-900">{filteredAndSortedData.length}</span> services in database</p>
+          <div className="flex items-center justify-between text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">
+            <p>Database synchronization: <span className="text-indigo-400">{filteredAndSortedData.length}</span> Active nodes</p>
             {(selectedCategory !== "All Categories" || searchQuery || sortBy !== "default") && (
               <button 
                 onClick={() => {
@@ -180,25 +180,25 @@ const Services = () => {
                   setSelectedCategory("All Categories");
                   setSortBy("default");
                 }}
-                className="text-indigo-600 hover:underline underline-offset-4"
+                className="text-[#22D3EE] hover:text-white transition-colors"
               >
-                Reset Selection
+                Reset Filter Logic
               </button>
             )}
           </div>
         </section>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <AnimatePresence mode="popLayout">
-            {filteredAndSortedData.map((singleCard, index) => (
+            {filteredAndSortedData.map((singleCard) => (
               <_motion.div
                 key={singleCard.id}
                 layout
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <Cards singleCard={singleCard} />
               </_motion.div>
@@ -211,13 +211,13 @@ const Services = () => {
           <_motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="py-32 text-center"
+            className="py-48 text-center"
           >
-            <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-8 border border-gray-100">
-              <Search className="text-gray-200" size={40} />
+            <div className="w-32 h-32 bg-[#111827] border border-[#374151] rounded-full flex items-center justify-center mx-auto mb-10 shadow-inner">
+              <Search className="text-gray-700" size={48} />
             </div>
-            <h3 className="text-3xl font-black text-gray-900 mb-4">No services discovered</h3>
-            <p className="text-gray-500 font-medium max-w-md mx-auto mb-10 leading-relaxed">
+            <h3 className="text-4xl font-black text-white mb-6">No nodes discovered</h3>
+            <p className="text-[#9CA3AF] font-bold max-w-md mx-auto mb-12 text-lg leading-relaxed">
               We couldn't find any professional services matching your refined criteria. Try clearing your filters or searching for alternate sectors.
             </p>
             <button 
@@ -226,9 +226,9 @@ const Services = () => {
                 setSelectedCategory("All Categories");
                 setSortBy("default");
               }}
-              className="px-10 py-4 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100"
+              className="btn-primary"
             >
-              Clear Global Filters
+              Flush Filter Buffer
             </button>
           </_motion.div>
         )}

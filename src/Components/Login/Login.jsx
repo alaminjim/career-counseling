@@ -69,90 +69,90 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB] flex flex-col selection:bg-indigo-100 selection:text-indigo-700">
+    <div className="min-h-screen bg-[#0B1020] flex flex-col selection:bg-indigo-500/30 selection:text-indigo-200">
       <NavBar />
       
-      <main className="flex-grow flex items-center justify-center pt-32 pb-20 px-6">
+      <main className="flex-grow flex items-center justify-center pt-32 pb-20 px-6 relative overflow-hidden">
+        {/* Background Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-500/5 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+
         <_motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-lg relative z-10"
         >
-          {/* Subtle Decorative Background shape */}
-          <div className="absolute -top-12 -right-12 w-64 h-64 bg-indigo-100/40 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse"></div>
-
-          <div className="bg-white rounded-[3.5rem] p-12 md:p-16 shadow-2xl shadow-indigo-100/20 relative overflow-hidden border border-gray-50">
-            <div className="text-center space-y-4 mb-14">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-widest border border-indigo-100 mb-2">
+          <div className="bg-[#1F2937] rounded-[3.5rem] p-12 md:p-20 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.6)] relative overflow-hidden border border-[#374151]">
+            <div className="text-center space-y-6 mb-16">
+              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] border border-indigo-500/20">
                 <ShieldCheck size={14} />
                 <span>Security Protocol Active</span>
               </div>
-              <h1 className="text-5xl font-black tracking-tight text-gray-900 leading-tight">
-                Welcome <span className="text-indigo-600 italic">Back</span>
+              <h1 className="text-5xl font-black tracking-tight text-white leading-tight">
+                Welcome <span className="text-[#22D3EE] italic">Back</span>
               </h1>
-              <p className="text-gray-400 font-bold uppercase text-[10px] tracking-[0.4em]">Initialize Session Access</p>
+              <p className="text-[#9CA3AF] font-bold uppercase text-[10px] tracking-[0.4em]">Initialize Session Access</p>
             </div>
 
-            <form onSubmit={handelLogIn} className="space-y-8">
-              <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 ml-4">Mail Protocol</label>
+            <form onSubmit={handelLogIn} className="space-y-10">
+              <div className="space-y-4">
+                <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 ml-6">Mail Protocol</label>
                 <div className="relative group">
-                  <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-indigo-600 transition-colors" size={20} />
+                  <Mail className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
                     type="email"
                     name="email"
                     required
-                    className="input-premium pl-16 py-5 text-gray-900 font-bold shadow-inner"
+                    className="input-premium pl-20 py-6 uppercase tracking-widest text-[10px]"
                     placeholder="official@corporation.com"
                   />
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="flex justify-between items-center px-4">
-                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">Secure Token</label>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center px-6">
+                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500">Secure Token</label>
                   <button 
                     type="button"
                     onClick={() => setShowForgotModal(true)}
-                    className="text-[10px] font-black uppercase tracking-widest text-indigo-600 hover:text-indigo-800 transition-colors cursor-pointer"
+                    className="text-[10px] font-black uppercase tracking-widest text-[#22D3EE] hover:text-[#22D3EE]/80 transition-colors cursor-pointer"
                   >
                     Recover?
                   </button>
                 </div>
                 <div className="relative group">
-                  <Lock className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-indigo-600 transition-colors" size={20} />
+                  <Lock className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
                     required
-                    className="input-premium pl-16 pr-16 py-5 text-gray-900 font-bold shadow-inner"
+                    className="input-premium pl-20 pr-20 py-6 uppercase tracking-widest text-[10px]"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-300 hover:text-indigo-600 transition-colors cursor-pointer"
+                    className="absolute right-8 top-1/2 -translate-y-1/2 text-gray-600 hover:text-white transition-colors cursor-pointer"
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
                 </div>
               </div>
 
-              <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-6 rounded-2xl text-xl font-black uppercase tracking-[0.2em] flex items-center justify-center gap-4 transition-all shadow-xl shadow-indigo-100 active:scale-95 mt-12 group">
-                Authorize <ArrowRight size={24} className="transition-transform group-hover:translate-x-2" />
+              <button className="btn-cta w-full py-6 text-lg hover:scale-[1.01] shadow-2xl shadow-green-900/40 mt-6">
+                Authorize Session Access
               </button>
             </form>
 
-            <div className="relative my-14">
-              <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-gray-100"></span></div>
-              <div className="relative flex justify-center text-[9px] font-black uppercase tracking-[0.5em]"><span className="bg-white px-8 text-gray-300">Alternate Gateway</span></div>
+            <div className="relative my-16">
+              <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-[#374151]"></span></div>
+              <div className="relative flex justify-center text-[9px] font-black uppercase tracking-[0.5em]"><span className="bg-[#1F2937] px-8 text-gray-600">Alternate Gateway</span></div>
             </div>
 
             <button
               onClick={handelGoogle}
-              className="w-full py-5 border-2 border-gray-50 rounded-2xl flex items-center justify-center gap-4 font-black uppercase tracking-widest hover:bg-gray-50 transition-all text-gray-500 hover:text-gray-900 cursor-pointer shadow-sm group"
+              className="w-full py-6 bg-[#111827] border border-[#374151] rounded-2xl flex items-center justify-center gap-4 font-black uppercase tracking-[0.2em] hover:bg-[#374151] transition-all text-gray-400 hover:text-white cursor-pointer shadow-inner group text-[10px]"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" className="group-hover:scale-110 transition-transform">
+              <svg width="20" height="20" viewBox="0 0 24 24" className="group-hover:scale-110 transition-transform">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
@@ -161,8 +161,8 @@ const Login = () => {
               Google SSO Access
             </button>
 
-            <p className="text-center mt-14 text-xs font-bold text-gray-400 uppercase tracking-widest">
-              New Strategist? <Link to="/register" className="text-indigo-600 hover:text-indigo-800 transition-colors border-b-2 border-indigo-50 pb-0.5 ml-2">Initialize Profile</Link>
+            <p className="text-center mt-16 text-[10px] font-black text-gray-500 uppercase tracking-widest">
+              New Strategist? <Link to="/register" className="text-[#22D3EE] hover:text-[#22D3EE]/80 transition-colors border-b border-[#22D3EE]/20 pb-0.5 ml-2">Initialize Profile</Link>
             </p>
           </div>
         </_motion.div>
@@ -171,45 +171,45 @@ const Login = () => {
       {/* Identity Recovery Modal */}
       <AnimatePresence>
         {showForgotModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-white/40 backdrop-blur-3xl">
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-[#0B1020]/60 backdrop-blur-xl">
             <_motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-[3.5rem] p-10 md:p-14 max-w-lg w-full shadow-[0_40px_100px_-20px_rgba(79,70,229,0.2)] relative border border-indigo-50"
+              className="bg-[#1F2937] rounded-[3.5rem] p-12 md:p-16 max-w-lg w-full shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] relative border border-[#374151]"
             >
               <button 
                 onClick={() => setShowForgotModal(false)}
-                className="absolute top-10 right-10 p-3 text-gray-300 hover:text-indigo-600 hover:bg-gray-50 rounded-2xl transition-all cursor-pointer"
+                className="absolute top-12 right-12 p-3 text-gray-600 hover:text-white hover:bg-white/5 rounded-2xl transition-all cursor-pointer"
               >
                 <X size={24} />
               </button>
 
-              <div className="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-[1.5rem] flex items-center justify-center mb-10 border border-indigo-100 shadow-xl shadow-indigo-100/10">
+              <div className="w-20 h-20 bg-indigo-500/10 text-indigo-400 rounded-3xl flex items-center justify-center mb-10 border border-indigo-500/20 shadow-2xl">
                 <KeyRound size={40} />
               </div>
               
-              <h3 className="text-4xl font-black text-gray-900 mb-4 tracking-tighter">Identity Recovery</h3>
-              <p className="text-gray-500 font-bold mb-10 text-lg leading-relaxed">
+              <h3 className="text-4xl font-black text-white mb-4 tracking-tighter">Identity Recovery</h3>
+              <p className="text-[#9CA3AF] font-bold mb-12 text-lg leading-relaxed">
                 Provide your secure email to receive an authentication bypass link.
               </p>
 
-              <form onSubmit={handlePasswordReset} className="space-y-8">
+              <form onSubmit={handlePasswordReset} className="space-y-10">
                 <div className="relative group">
-                  <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-indigo-600 transition-colors" size={20} />
+                  <Mail className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
                     type="email"
                     value={resetEmail}
                     onChange={(e) => setResetEmail(e.target.value)}
                     required
-                    className="input-premium pl-16 py-5 text-gray-900 font-bold shadow-inner"
+                    className="input-premium pl-20 py-6 uppercase tracking-widest text-[10px]"
                     placeholder="recovery@secure.com"
                   />
                 </div>
                 <button 
                   type="submit" 
                   disabled={isResetting}
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] disabled:opacity-50 transition-all shadow-xl shadow-indigo-100 active:scale-95 text-sm"
+                  className="btn-cta w-full py-6 uppercase tracking-[0.2em] disabled:opacity-50 text-[11px]"
                 >
                   {isResetting ? <span className="loading loading-spinner loading-md"></span> : "Dispatch Recovery Log"}
                 </button>
@@ -225,4 +225,3 @@ const Login = () => {
 };
 
 export default Login;
-

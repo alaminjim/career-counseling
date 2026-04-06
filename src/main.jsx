@@ -14,29 +14,30 @@ createRoot(document.getElementById("root")).render(
       <Toaster 
         position="top-center"
         toastOptions={{
-          duration: 3000,
+          duration: 4000,
           style: {
-            borderRadius: '20px',
-            background: '#ffffff',
-            color: '#111827',
-            fontWeight: '800',
-            fontSize: '14px',
-            padding: '16px 24px',
-            border: '1px solid #F3F4F6',
-            boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+            borderRadius: '24px',
+            background: '#1F2937',
+            color: '#F9FAFB',
+            fontWeight: '900',
+            fontSize: '12px',
+            padding: '20px 32px',
+            border: '1px solid #374151',
+            boxShadow: '0 40px 100px -20px rgba(0, 0, 0, 0.4)',
             textTransform: 'uppercase',
-            letterSpacing: '0.05em'
+            letterSpacing: '0.15em',
+            backdropFilter: 'blur(16px)',
           },
           success: {
             iconTheme: {
-              primary: '#4F46E5',
-              secondary: '#EEF2FF',
+              primary: '#22D3EE',
+              secondary: '#111827',
             },
           },
           error: {
             iconTheme: {
               primary: '#EF4444',
-              secondary: '#FEF2F2',
+              secondary: '#111827',
             },
           },
         }}

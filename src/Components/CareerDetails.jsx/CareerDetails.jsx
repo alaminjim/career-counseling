@@ -341,12 +341,12 @@ const CareerDetails = () => {
               <form onSubmit={handleContactSubmit} className="space-y-10 relative z-10">
                 <div className="grid grid-cols-2 gap-8">
                   <div className="relative group col-span-2 md:col-span-1">
-                    <User className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#22D3EE]" size={24} />
-                    <input type="text" required placeholder="Identity Name" className="w-full pl-20 pr-8 py-6 bg-[#111827] border border-[#374151] rounded-[2rem] focus:border-[#22D3EE] transition-all outline-none text-white font-black uppercase text-[11px] tracking-widest shadow-inner" />
+                    <User className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#22D3EE]" size={24} />
+                    <input type="text" required placeholder="Identity Name" className="w-full pl-24 pr-8 py-6 bg-[#111827] border border-[#374151] rounded-[2rem] focus:border-[#22D3EE] transition-all outline-none text-white font-black uppercase text-[11px] tracking-widest shadow-inner" />
                   </div>
                   <div className="relative group col-span-2 md:col-span-1">
-                    <Mail className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#22D3EE]" size={24} />
-                    <input type="email" required placeholder="Network Mail" className="w-full pl-20 pr-8 py-6 bg-[#111827] border border-[#374151] rounded-[2rem] focus:border-[#22D3EE] transition-all outline-none text-white font-black uppercase text-[11px] tracking-widest shadow-inner" />
+                    <Mail className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#22D3EE]" size={24} />
+                    <input type="email" required placeholder="Network Mail" className="w-full pl-24 pr-8 py-6 bg-[#111827] border border-[#374151] rounded-[2rem] focus:border-[#22D3EE] transition-all outline-none text-white font-black uppercase text-[11px] tracking-widest shadow-inner" />
                   </div>
                 </div>
                 <div className="relative group">

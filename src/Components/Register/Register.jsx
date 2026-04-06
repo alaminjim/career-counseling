@@ -86,12 +86,12 @@ const Register = () => {
                 <div className="space-y-4">
                   <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 ml-6">Full Identity</label>
                   <div className="relative group">
-                    <User className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
+                    <User className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                     <input
                       type="text"
                       name="name"
                       required
-                      className="input-premium pl-20 py-6 uppercase tracking-widest text-[10px]"
+                      className="input-premium pl-24 pr-8 py-6 uppercase tracking-widest text-[10px]"
                       placeholder="Alex Strategic"
                     />
                   </div>
@@ -99,12 +99,12 @@ const Register = () => {
                 <div className="space-y-4">
                   <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 ml-6">Profile Asset URL</label>
                   <div className="relative group">
-                    <Image className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
+                    <Image className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                     <input
                       type="text"
                       name="photo"
                       required
-                      className="input-premium pl-20 py-6 uppercase tracking-widest text-[10px]"
+                      className="input-premium pl-24 pr-8 py-6 uppercase tracking-widest text-[10px]"
                       placeholder="https://cloud.assets/..."
                     />
                   </div>
@@ -114,12 +114,12 @@ const Register = () => {
               <div className="space-y-4">
                 <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 ml-6">Professional Mail</label>
                 <div className="relative group">
-                  <Mail className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
+                  <Mail className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
                     type="email"
                     name="email"
                     required
-                    className="input-premium pl-20 py-6 uppercase tracking-widest text-[10px]"
+                    className="input-premium pl-24 pr-8 py-6 uppercase tracking-widest text-[10px]"
                     placeholder="hq@enterprise.com"
                   />
                 </div>
@@ -128,12 +128,12 @@ const Register = () => {
               <div className="space-y-4">
                 <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 ml-6">Secure Token</label>
                 <div className="relative group">
-                  <Lock className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
+                  <Lock className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
                     required
-                    className="input-premium pl-20 pr-20 py-6 uppercase tracking-widest text-[10px]"
+                    className="input-premium pl-24 pr-20 py-6 uppercase tracking-widest text-[10px]"
                     placeholder="••••••••"
                   />
                   <button

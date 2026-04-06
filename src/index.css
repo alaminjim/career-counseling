@@ -95,7 +95,7 @@
 }
 
 .input-premium {
-  @apply w-full px-6 py-5 bg-[#111827] border border-[#374151] rounded-2xl outline-none transition-all font-bold text-white placeholder:text-gray-600;
+  @apply w-full py-5 bg-[#111827] border border-[#374151] rounded-2xl outline-none transition-all font-bold text-white placeholder:text-gray-600;
 }
 
 .input-premium:focus {

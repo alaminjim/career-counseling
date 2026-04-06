@@ -2,7 +2,7 @@ import { Outlet, Link } from "react-router-dom";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import BackToTop from "../BackToTop/BackToTop";
-import { motion as _motion, useInView } from "framer-motion";
+import { motion as _motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
   ArrowRight, CheckCircle2, Sparkles, Target, Zap, Users,

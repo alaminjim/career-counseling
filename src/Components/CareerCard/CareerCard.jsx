@@ -7,35 +7,35 @@ const CareerCard = () => {
   const career = useLoaderData();
 
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto selection:bg-indigo-100 selection:text-indigo-700">
+    <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto selection:bg-indigo-100 selection:text-indigo-700">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
-        <div className="max-w-2xl space-y-6">
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-xl bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] border border-indigo-100 shadow-sm">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-24">
+        <div className="max-w-3xl space-y-8">
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] border border-indigo-500/20 shadow-sm">
             <Layers size={14} />
-            <span>Premium Service Nodes</span>
+            <span>Core Knowledge Hub</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-gray-900 leading-tight">
-            Our Elite <span className="text-indigo-600 italic">Success Assets</span>
+          <h2 className="text-5xl md:text-8xl font-black tracking-tight text-white leading-[0.9]">
+            Elite <span className="text-[#22D3EE] italic underline underline-offset-[12px] decoration-indigo-500/30">Strategic</span> Assets
           </h2>
-          <p className="text-gray-500 text-xl leading-relaxed font-semibold">
+          <p className="text-[#9CA3AF] text-xl leading-relaxed font-bold max-w-2xl">
             Precision-engineered career diagnostics and strategic counseling designed to accelerate your position in the global job market.
           </p>
         </div>
         
         <Link 
           to="/services" 
-          className="group flex items-center gap-4 font-black uppercase tracking-[0.2em] text-xs text-indigo-600 hover:text-indigo-800 transition-all border-b-2 border-indigo-100 pb-2"
+          className="group flex items-center gap-6 font-black uppercase tracking-[0.3em] text-[10px] text-indigo-400 hover:text-white transition-all pb-2"
         >
-          Access Full catalog 
-          <div className="w-12 h-12 rounded-2xl border-2 border-gray-100 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 transition-all duration-500 shadow-sm bg-white">
-            <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+          Access Intelligence catalog 
+          <div className="w-14 h-14 rounded-[1.5rem] border border-[#374151] flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 transition-all duration-500 shadow-2xl bg-[#1F2937]">
+            <ArrowRight size={24} className="group-hover:translate-x-1.5 transition-transform" />
           </div>
         </Link>
       </div>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {career.slice(0, 3).map((singleCard, index) => (
           <Cards key={singleCard.id} singleCard={singleCard} />
         ))}
@@ -43,22 +43,22 @@ const CareerCard = () => {
 
       {/* Trust Banner / Bottom CTA */}
       <_motion.div 
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mt-32 p-10 md:p-20 rounded-[4rem] bg-indigo-600 text-white relative overflow-hidden shadow-2xl shadow-indigo-100"
+        className="mt-40 p-16 md:p-24 rounded-[4rem] bg-[#1F2937] border border-[#374151] text-white relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)]"
       >
-        <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-400/20 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-400/5 rounded-full blur-[120px] pointer-events-none"></div>
         
-        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="space-y-6 text-center lg:text-left max-w-2xl">
-            <h3 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">
-              Ready for Strategic <br />Career Navigation?
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+          <div className="space-y-8 text-center lg:text-left max-w-2xl">
+            <h3 className="text-4xl md:text-6xl font-black tracking-tight leading-none uppercase">
+              Ready for Strategic <br /><span className="text-[#16A34A] italic">Navigation?</span>
             </h3>
-            <p className="text-indigo-100 text-lg font-medium opacity-90">Initialize a 20-minute baseline diagnostic session with our lead industry strategist.</p>
+            <p className="text-[#9CA3AF] text-xl font-bold opacity-90 leading-relaxed">Initialize a 20-minute baseline diagnostic session with our lead industry strategist.</p>
           </div>
-          <button className="btn-cta bg-[#10B981] hover:bg-[#059669] text-white px-12 py-6 rounded-[2.5rem] text-xl font-black shadow-2xl transition-all active:scale-95 whitespace-nowrap">
+          <button className="btn-cta text-xl px-16 py-7 shadow-2xl shadow-green-900/40 whitespace-nowrap">
             Authorize Diagnostic
           </button>
         </div>

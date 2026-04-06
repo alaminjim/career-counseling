@@ -1,117 +1,72 @@
 import { createContext, useEffect, useState } from "react";
-import { useUser, useClerk, useSignIn, useSignUp } from "@clerk/clerk-react";
+import { jwtDecode } from "jwt-decode";
 
 const AuthContextUser = createContext();
 
 const AuthContext = ({ children }) => {
-  const { user: clerkUser, isLoaded: userLoaded } = useUser();
-  const { signOut, openUserProfile } = useClerk();
-  const { signIn, isLoaded: signInLoaded } = useSignIn();
-  const { signUp, isLoaded: signUpLoaded } = useSignUp();
-  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Persistence: Check localStorage on Mount
   useEffect(() => {
-    if (userLoaded) {
-      if (clerkUser) {
-        setUser({
-          displayName: clerkUser.fullName,
-          email: clerkUser.primaryEmailAddress?.emailAddress,
-          photoURL: clerkUser.imageUrl,
-          uid: clerkUser.id,
-        });
-      } else {
-        setUser(null);
-      }
-      setLoading(false);
+    const savedUser = localStorage.getItem("careerPathUser");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
     }
-  }, [clerkUser, userLoaded]);
+    setLoading(false);
+  }, []);
 
-  const createUser = async (email, password) => {
-    if (!signUpLoaded) return;
+  const handleGoogleLogin = (credentialResponse) => {
     setLoading(true);
     try {
-      const result = await signUp.create({
-        emailAddress: email,
-        password,
-      });
-      // In a real flow, you'd handle email verification here
-      return result;
+      const decoded = jwtDecode(credentialResponse.credential);
+      const userData = {
+        displayName: decoded.name,
+        email: decoded.email,
+        photoURL: decoded.picture,
+        uid: decoded.sub, // Unique ID from Google
+      };
+      
+      setUser(userData);
+      localStorage.setItem("careerPathUser", JSON.stringify(userData));
+      return userData;
+    } catch (error) {
+      console.error("Auth Error:", error);
+      throw error;
     } finally {
       setLoading(false);
     }
-  };
-
-  const createLoginUser = async (email, password) => {
-    if (!signInLoaded) return;
-    setLoading(true);
-    try {
-      const result = await signIn.create({
-        identifier: email,
-        password,
-      });
-      return result;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const updateProfileUser = async (profile) => {
-    if (!clerkUser) return;
-    
-    const updates = {};
-    if (profile.displayName) {
-      const parts = profile.displayName.split(" ");
-      updates.firstName = parts[0];
-      updates.lastName = parts.slice(1).join(" ") || "";
-    }
-    
-    await clerkUser.update(updates);
-    
-    if (profile.photoURL) {
-      // Clerk's setProfileImage expects a file or Blob, but for URLs we might 
-      // need to handle differently or just rely on Clerk's default image handling.
-      // For now, we'll just update the user metadata if needed or provide a log.
-      console.log("Clerk profile image update requested for:", profile.photoURL);
-    }
-    
-    return Promise.resolve();
-  };
-
-  const createUserGoogle = async () => {
-    if (!signInLoaded) return;
-    return signIn.authenticateWithRedirect({
-      strategy: "oauth_google",
-      redirectUrl: "/",
-      redirectUrlComplete: "/",
-    });
   };
 
   const userSignOut = () => {
     setLoading(true);
-    return signOut();
+    setUser(null);
+    localStorage.removeItem("careerPathUser");
+    setLoading(false);
+    return Promise.resolve();
   };
 
-  const resetPassword = async (email) => {
-    if (!signInLoaded) return;
-    // Clerk handles password reset via sign-in flow
-    return signIn.create({
-      identifier: email,
-      strategy: "reset_password_email_code",
-    });
+  // Bridge functions to maintain compatibility with existing components
+  const createUser = () => Promise.reject("Use Google Login");
+  const createLoginUser = () => Promise.reject("Use Google Login");
+  const updateProfileUser = (profile) => {
+    const updatedUser = { ...user, ...profile };
+    setUser(updatedUser);
+    localStorage.setItem("careerPathUser", JSON.stringify(updatedUser));
+    return Promise.resolve();
   };
 
   const authInfo = {
-    createUser,
-    createLoginUser,
     user,
     setUser,
-    updateProfileUser,
-    userSignOut,
-    createUserGoogle,
     loading,
-    resetPassword,
+    handleGoogleLogin,
+    userSignOut,
+    // Maintaining these names for compatibility where possible
+    createUser,
+    createLoginUser,
+    updateProfileUser,
+    createUserGoogle: () => {}, // Handled by GoogleLogin component
   };
 
   return (

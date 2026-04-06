@@ -6,17 +6,13 @@ import router from "./Routes/Routes.jsx";
 import AuthContext from "./Components/Auth/AuthContext.jsx";
 import { Toaster } from "react-hot-toast";
 import Loading from "./Components/Loading/Loading.jsx";
-import { ClerkProvider } from "@clerk/clerk-react";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key");
-}
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <AuthContext>
         <Toaster 
           position="top-center"
@@ -51,6 +47,6 @@ createRoot(document.getElementById("root")).render(
         />
         <RouterProvider router={router} fallbackElement={<Loading />} />
       </AuthContext>
-    </ClerkProvider>
+    </GoogleOAuthProvider>
   </StrictMode>
 );

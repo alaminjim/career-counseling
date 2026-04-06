@@ -18,13 +18,15 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handelSignOut = async () => {
-    try {
-      await userSignOut();
-      toast.success("Logged out successfully");
-    } catch (err) {
-      toast.error(err.message || "Sign-out failed.");
-    }
+  const handelSignOut = () => {
+    userSignOut()
+      .then(() => {
+        toast.success("Identity Disconnected");
+        setIsMobileMenuOpen(false);
+      })
+      .catch((err) => {
+        toast.error("Logout Protocols Failed", err);
+      });
   };
 
   const navLinks = [

@@ -7,15 +7,15 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', sans-serif;
   
-  /* Premium Palette */
-  --primary: #4f46e5;
+  /* Unique Aurora Premium Palette */
+  --primary: #8b5cf6; /* Vivid Violet */
   --primary-content: #ffffff;
-  --secondary: #0ea5e9;
-  --accent: #f59e0b;
-  --neutral: #1e293b;
-  --base-100: #ffffff;
-  --base-200: #f8fafc;
-  --base-300: #f1f5f9;
+  --secondary: #06b6d4; /* Electric Cyan */
+  --accent: #f43f5e; /* Vibrant Rose */
+  --neutral: #0f172a; /* Deep Slate */
+  --base-100: #fafcfd;
+  --base-200: #f1f5f9;
+  --base-300: #e2e8f0;
   
   /* Animation variables */
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -33,6 +33,12 @@ body {
   font-family: var(--font-sans);
   color: var(--neutral);
   background-color: var(--base-100);
+  /* Global aesthetic mesh background */
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(139, 92, 246, 0.06) 0px, transparent 50%),
+    radial-gradient(at 85% 10%, rgba(6, 182, 212, 0.05) 0px, transparent 50%),
+    radial-gradient(at 50% 60%, rgba(244, 63, 94, 0.04) 0px, transparent 50%);
+  background-attachment: fixed;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
@@ -47,21 +53,21 @@ h1, h2, h3, h4, h5, h6 {
 /* ======= PREMIUM UTILITY CLASSES ======= */
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.08);
 }
 
 .btn-premium {
   @apply rounded-xl px-8 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
-  background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #a78bfa 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
 }
 
 .btn-premium:hover {
-  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.45);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
 }
 
 .btn-secondary-premium {

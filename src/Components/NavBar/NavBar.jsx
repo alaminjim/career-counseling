@@ -91,8 +91,8 @@ const NavBar = () => {
                 </div>
                 <ChevronDown size={16} className="text-neutral/40 transition-transform duration-300 group-hover:translate-y-0.5" />
               </div>
-              <ul tabIndex={0} className="dropdown-content mt-4 z-[1] p-2 shadow-2xl bg-white rounded-2xl w-52 border border-neutral/5 overflow-hidden">
-                <li className="p-3 border-b border-neutral/5 mb-1">
+              <ul tabIndex={0} className="dropdown-content mt-4 z-[1] p-2 shadow-2xl bg-base-200 rounded-2xl w-52 border border-neutral/20 overflow-hidden">
+                <li className="p-3 border-b border-neutral/20 mb-1">
                   <p className="text-xs font-bold uppercase text-neutral/40">Account Info</p>
                   <p className="text-sm font-medium truncate">{user?.email}</p>
                 </li>
@@ -131,7 +131,7 @@ const NavBar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-b border-neutral/5 overflow-hidden"
+            className="lg:hidden bg-base-100 border-b border-neutral/20 overflow-hidden"
           >
             <div className="px-4 py-6 space-y-4">
               <ul className="space-y-4">

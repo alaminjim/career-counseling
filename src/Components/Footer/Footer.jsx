@@ -21,9 +21,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white pt-20 pb-10 relative overflow-hidden">
+    <footer className="bg-[#222831] border-t border-[#393E46] text-[#EEEEEE] pt-20 pb-10 relative overflow-hidden">
       {/* Animated glow effect behind footer content */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-[#00ADB5] to-transparent opacity-50"></div>
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         

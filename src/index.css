@@ -5,23 +5,21 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-heading: 'Outfit', sans-serif;
+    /* Color Hunt Exact Palette */
+    --p: 183 100% 35%; /* Primary: #00ADB5 (Cyan) */
+    --pc: 216 18% 16%; /* Primary text: #222831 (Dark) */
+    --s: 217 10% 25%;  /* Secondary: #393E46 (Gray/Slate) */
+    --sc: 0 0% 93%;    /* Secondary text: #EEEEEE */
+    --a: 183 100% 45%; /* Accent: Lighter Cyan for gradients */
+    --ac: 216 18% 16%; /* Accent text */
     
-    /* Professional SaaS Palette (DaisyUI HSL format) */
-    --p: 221 83% 53%; /* Primary: Royal Blue (#2563eb) */
-    --pc: 0 0% 100%; /* Primary Content: White */
-    --s: 244 76% 59%; /* Secondary: Deep Indigo (#4f46e5) */
-    --sc: 0 0% 100%; /* Secondary Content: White */
-    --a: 258 90% 66%; /* Accent: Amethyst Purple (#8b5cf6) */
-    --ac: 0 0% 100%; /* Accent Content: White */
+    --n: 216 18% 16%;  /* Neutral: #222831 */
+    --nc: 0 0% 93%;    /* Neutral Content: #EEEEEE */
     
-    --n: 222 47% 11%; /* Neutral: Slate 900 (#0f172a) */
-    --nc: 210 40% 98%; /* Neutral Content */
-    --b1: 0 0% 100%; /* Base 100: White */
-    --b2: 210 40% 98%; /* Base 200: Slate 50 */
-    --b3: 214 32% 91%; /* Base 300: Slate 100 */
-    --bc: 222 47% 11%; /* Base Content */
+    --b1: 216 18% 12%; /* Base 100: Very Dark (Darker than #222831 for depth) */
+    --b2: 216 18% 16%; /* Base 200: #222831 */
+    --b3: 217 10% 25%; /* Base 300: #393E46 */
+    --bc: 0 0% 93%;    /* Base Text: #EEEEEE */
 
     --in: 198 90% 54%;
     --su: 158 64% 52%;
@@ -29,85 +27,62 @@
     --er: 340 82% 52%;
   }
 
-body {
-  font-family: var(--font-sans);
-  color: var(--neutral);
-  background-color: var(--base-100);
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  scroll-behavior: smooth;
+  body {
+    font-family: var(--font-sans);
+    color: var(--bc);
+    background-color: var(--b1);
+    /* Sleek gradient background using the palette */
+    background-image: 
+      radial-gradient(circle at 15% 0%, rgba(0, 173, 181, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 85% 100%, rgba(57, 62, 70, 0.5) 0%, transparent 50%);
+    background-attachment: fixed;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
-
-} /* End @layer base */
-
-/* ======= ANIMATION KEYFRAMES ======= */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.bg-hero-moving {
-  background: linear-gradient(-45deg, #ffffff, #eff6ff, #e0e7ff, #f8fafc);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
-}
-
-/* ======= PREMIUM UTILITY CLASSES ======= */
+/* ======= PREMIUM GRADIANT CLASSES ======= */
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(34, 40, 49, 0.85); /* #222831 */
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(238, 238, 238, 0.05); /* #EEEEEE */
 }
 
 .glass-card {
-  background: #ffffff;
-  border: 1px solid #f1f5f9;
-  box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.05);
+  background: #222831;
+  border: 1px solid #393E46;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 .glass-card:hover {
-  box-shadow: 0 10px 40px -10px rgba(79, 70, 229, 0.15);
-  transform: translateY(-2px);
+  border: 1px solid #00ADB5;
+  box-shadow: 0 10px 40px rgba(0, 173, 181, 0.15);
+  transform: translateY(-4px);
 }
 
+/* Eye-catching gradient button */
 .btn-premium {
-  @apply rounded-xl px-8 py-3 font-semibold transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  color: white;
-  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.btn-premium::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.3s ease;
-}
-
-.btn-premium:hover::before {
-  opacity: 1;
+  @apply rounded-xl px-8 py-3 font-bold transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer;
+  background: linear-gradient(135deg, #00ADB5 0%, #00d4df 100%);
+  color: #222831;
+  box-shadow: 0 4px 15px rgba(0, 173, 181, 0.2);
+  border: none;
 }
 
 .btn-premium:hover {
-  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 173, 181, 0.4);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+  background: linear-gradient(to right, #00ADB5 0%, #EEEEEE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

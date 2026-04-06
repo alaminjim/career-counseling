@@ -104,12 +104,12 @@ const MyProfile = () => {
                 <div className="space-y-4">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.5em] ml-6">Network Alias</label>
                   <div className="relative group">
-                    <User className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={24} />
+                    <User className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={24} />
                     <input 
                       type="text" 
                       name="name"
                       defaultValue={user?.displayName}
-                      className="input-premium pl-24 pr-8 py-6 text-white font-black uppercase text-[11px] tracking-widest shadow-inner !bg-[#111827]" 
+                      className="input-premium pl-16 pr-8 py-6 text-white font-black uppercase text-[11px] tracking-widest shadow-inner !bg-[#111827]" 
                       placeholder="ENTER ALIAS"
                     />
                   </div>
@@ -118,12 +118,12 @@ const MyProfile = () => {
                 <div className="space-y-4">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-[0.5em] ml-6">Node Avatar URL</label>
                   <div className="relative group">
-                    <Camera className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={24} />
+                    <Camera className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={24} />
                     <input 
                       type="text" 
                       name="photo"
                       defaultValue={user?.photoURL}
-                      className="input-premium pl-24 pr-8 py-6 text-white font-black uppercase text-[11px] tracking-widest shadow-inner !bg-[#111827]" 
+                      className="input-premium pl-16 pr-8 py-6 text-white font-black uppercase text-[11px] tracking-widest shadow-inner !bg-[#111827]" 
                       placeholder="SYSTEM://URL"
                     />
                   </div>

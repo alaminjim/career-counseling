@@ -97,12 +97,12 @@ const Login = () => {
               <div className="space-y-4">
                 <label className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500 ml-6">Email Address</label>
                 <div className="relative group">
-                  <Mail className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
+                  <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
                     type="email"
                     name="email"
                     required
-                    className="input-premium pl-24 pr-8 py-6 uppercase tracking-widest text-[10px]"
+                    className="input-premium pl-16 pr-8 py-6 uppercase tracking-widest text-[10px]"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -120,12 +120,12 @@ const Login = () => {
                   </button>
                 </div>
                 <div className="relative group">
-                  <Lock className="absolute left-7 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
+                  <Lock className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
                     required
-                    className="input-premium pl-24 pr-20 py-6 uppercase tracking-widest text-[10px]"
+                    className="input-premium pl-16 pr-20 py-6 uppercase tracking-widest text-[10px]"
                     placeholder="••••••••"
                   />
                   <button
@@ -196,13 +196,13 @@ const Login = () => {
 
               <form onSubmit={handlePasswordReset} className="space-y-10">
                 <div className="relative group">
-                  <Mail className="absolute left-8 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
+                  <Mail className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-indigo-400 transition-colors" size={20} />
                   <input
                     type="email"
                     value={resetEmail}
                     onChange={(e) => setResetEmail(e.target.value)}
                     required
-                    className="input-premium pl-24 pr-8 py-6 uppercase tracking-widest text-[10px]"
+                    className="input-premium pl-16 pr-8 py-6 uppercase tracking-widest text-[10px]"
                     placeholder="your.email@example.com"
                   />
                 </div>

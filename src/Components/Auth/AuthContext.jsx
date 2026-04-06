@@ -16,11 +16,16 @@ const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Persistence for Google OAuth (decoding and manually setting user)
-  const handleGoogleLogin = (credentialResponse) => {
+  // Persistence for Google OAuth (manual profile fetch)
+  const handleGoogleLogin = async (tokenResponse) => {
     setLoading(true);
     try {
-      const decoded = jwtDecode(credentialResponse.credential);
+      // Fetch User Info using the access_token
+      const response = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+        headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+      });
+      const decoded = await response.json();
+      
       const userData = {
         displayName: decoded.name,
         email: decoded.email,

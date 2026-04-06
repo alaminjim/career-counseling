@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Briefcase, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Briefcase, Send, Sparkles } from "lucide-react";
 import { FaFacebook as Facebook, FaTwitter as Twitter, FaLinkedin as Linkedin, FaGithub as Github } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState } from "react";

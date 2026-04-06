@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContextUser } from "../Auth/AuthContext";
 import toast from "react-hot-toast";
 import { motion as _motion, AnimatePresence } from "framer-motion";
-import { Mail, Lock, Eye, EyeOff, ArrowRight, X, KeyRound } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight, X, KeyRound, ShieldCheck } from "lucide-react";
 import Footer from "../Footer/Footer";
 
 const Login = () => {

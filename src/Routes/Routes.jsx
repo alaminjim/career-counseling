@@ -20,14 +20,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <CareerCard></CareerCard>,
-        loader: () => fetch("http://localhost:5000/career"),
+        loader: () => fetch("/career.json"),
       },
     ],
   },
   {
     path: "/services",
     element: <Services></Services>,
-    loader: () => fetch("http://localhost:5000/career"),
+    loader: () => fetch("/career.json"),
   },
   {
     path: "/services/:id",
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         <CareerDetails></CareerDetails>
       </PrivateRoute>
     ),
-    loader: () => fetch("http://localhost:5000/career"),
+    loader: () => fetch("/career.json"),
   },
   {
     path: "/login",

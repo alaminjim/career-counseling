@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "service_name": "Executive Career Roadmap",
+    "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32b7?",
+    "category": "Career Planning",
+    "pricing": "$150",
+    "duration": "60 mins",
+    "counselor": "Dr. Sarah Chen",
+    "description": "Comprehensive career planning session tailored for mid-to-senior level professionals aiming for executive roles. Includes a 5-year trajectory map, leadership skills gap analysis, and personalized milestones. Gain the strategic insight needed to navigate complex corporate structures and accelerate your advancement with confidence.",
+    "rating": 4.9
+  },
+  {
+    "id": 2,
+    "service_name": "Tech Interview Mastery",
+    "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4",
+    "category": "Interview Prep",
+    "pricing": "$180",
+    "duration": "90 mins",
+    "counselor": "James Mitchell",
+    "description": "Intensive mock interview practice specifically designed for Software Engineering and Product Management roles at FAANG companies. Get actionable feedback on your technical communication, behavioral structuring (STAR method), and system design approaching.",
+    "rating": 5.0
+  },
+  {
+    "id": 3,
+    "service_name": "Resume & LinkedIn Overhaul",
+    "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4",
+    "category": "Personal Branding",
+    "pricing": "$120",
+    "duration": "45 mins",
+    "counselor": "Priya Sharma",
+    "description": "Transform your professional brand. We will rewrite your resume to pass ATS filters and optimize your LinkedIn profile to attract top recruiters organically. Perfect for career pivoters and recent graduates wanting to stand out in a competitive market.",
+    "rating": 4.8
+  },
+  {
+    "id": 4,
+    "service_name": "Salary Negotiation Strategy",
+    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
+    "category": "Negotiation",
+    "pricing": "$200",
+    "duration": "60 mins",
+    "counselor": "David Rodriguez",
+    "description": "Don't leave money on the table. Learn proven psychological tactics and data-driven strategies to negotiate higher base pay, better equity packages, and superior benefits. Recommended to take right before or after receiving a formal job offer.",
+    "rating": 4.9
+  },
+  {
+    "id": 5,
+    "service_name": "Career Pivot Consultation",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+    "category": "Career Planning",
+    "pricing": "$140",
+    "duration": "60 mins",
+    "counselor": "Emily Watson",
+    "description": "Feeling stuck? This session focuses on identifying your transferable skills and mapping them to entirely new industries. We will outline the exact certifications, networking strategies, and mindset shifts required to successfully transition to a fulfilling new career path.",
+    "rating": 4.7
+  },
+  {
+    "id": 6,
+    "service_name": "Freelance Business Setup",
+    "image": "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83",
+    "category": "Entrepreneurship",
+    "pricing": "$160",
+    "duration": "75 mins",
+    "counselor": "Michael Chang",
+    "description": "Ready to work for yourself? Get expert guidance on pricing your services, finding your first 3 high-paying clients, establishing a professional portfolio, and handling contracts. Ideal for creatives and developers looking to go independent.",
+    "rating": 4.8
+  }
+]
